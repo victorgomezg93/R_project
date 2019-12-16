@@ -1,26 +1,38 @@
 import os
 import glob
+import pandas
 
 source = r"D:\Master_Cybersecurity_management\05-Data_driven_security\blocklist-ipsets-master"
+dest = r"D:\Master_Cybersecurity_management\05-Data_driven_security\Practica\data.csv"
 
 files = glob.glob(os.path.join(source,"*.ipset"))
 
-ips = []
-data = {}
-datadic = {}
+dftotal = pandas.DataFrame(columns=["IP","Category","Maintainer"])
+
 for f in files:
+	ips = []
+	cat = ""
+	main = ""
+	df = pandas.DataFrame(columns=["IP","Category","Maintainer"])
+
 	aux = open(f,"r")
 	content = aux.readlines()
 	aux.close()
+
 	for l in  content:
 		if "Category" in l:
-			data["Category"] = str(l.split(":")[-1]).strip()
+			cat = str(l.split(":")[-1]).strip()
 		elif "Maintainer" in l:
-			data["Maintainer"] = str(l.split(":")[-1]).strip()
+			main = str(l.split(":")[-1]).strip()
 		elif "#" not in l:
-			ips.append(l)
+			ips.append(str(l).strip())
 
-	for ip in ips:
-		datadic[str(ip).strip()] = data
-	print(datadic)
-	break
+	df["IP"] = ips
+	df["Category"] = [cat]*len(ips)
+	df["Maintainer"] = [main]*len(ips)
+
+	dftotal = dftotal.append(df, ignore_index = True)
+
+
+print(dftotal)
+	
