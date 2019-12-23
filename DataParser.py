@@ -61,5 +61,30 @@ def dropduplicates(df):
 	aux["Occurrence"] = df.groupby(["IP","Category"]).cumcount() + 1
 	return aux.drop_duplicates(subset = ["IP","Category"], keep = "last")
 
+def dropduplicates2(df):
+	aux = df
+	aux["Occurrence"] = df.groupby("IP").cumcount() + 1
+	return aux.drop_duplicates(subset = "IP", keep = "last")
+
 def spread(df):
 	return df.pivot(index = "IP", columns = "Category", values = "Occurrence")
+
+def spread2(df):
+	return df.pivot(index = "IP", columns = "Country", values = "Occurrence")
+
+def correlation(df3,df4):
+	normalized = []
+	country = []
+	for c in df4.columns[2:]:
+		try:
+			a = int(df4[c])
+			b = int(df3.loc[df3["Country Name"] == c]["2018"])
+			normalized.append((a/b)*1000)
+			country.append(c)
+		except:
+			pass
+	aux = pandas.DataFrame(columns=["Country","Risk"])
+	aux["Country"] = country
+	aux["Risk"] = normalized
+
+	return aux
