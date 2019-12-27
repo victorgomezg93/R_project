@@ -1,0 +1,226 @@
+,Country,Category
+0,Afghanistan,attacks
+1,Albania,anonymizers
+2,Algeria,spam
+3,American Samoa,anonymizers
+4,Andorra,malware
+5,Angola,spam
+6,Anguilla,attacks
+7,Antigua and Barbuda,anonymizers
+8,Argentina,attacks
+9,Armenia,attacks
+10,Aruba,anonymizers
+11,Australia,attacks
+12,Austria,attacks
+13,Azerbaijan,spam
+14,Bahamas,attacks
+15,Bahrain,reputation
+16,Bangladesh,anonymizers
+17,Barbados,anonymizers
+18,Belarus,spam
+19,Belgium,attacks
+20,Belize,attacks
+21,Benin,attacks
+22,Bermuda,anonymizers
+23,Bhutan,attacks
+24,Bolivia,spam
+25,Bosnia and Herzegovina,attacks
+26,Botswana,attacks
+27,Brazil,attacks
+28,British Virgin Islands,reputation
+29,Brunei,anonymizers
+30,Bulgaria,attacks
+31,Burkina Faso,anonymizers
+32,Burundi,attacks
+33,Cabo Verde,anonymizers
+34,Cambodia,anonymizers
+35,Cameroon,spam
+36,Canada,attacks
+37,Cayman Islands,anonymizers
+38,Central African Republic,anonymizers
+39,Chad,attacks
+40,Chile,attacks
+41,China,attacks
+42,Colombia,attacks
+43,Comoros,anonymizers
+44,Congo Republic,anonymizers
+45,Cook Islands,anonymizers
+46,Costa Rica,attacks
+47,Croatia,spam
+48,Cuba,spam
+49,Curaçao,anonymizers
+50,Cyprus,reputation
+51,Czechia,attacks
+52,DR Congo,attacks
+53,Denmark,attacks
+54,Djibouti,anonymizers
+55,Dominica,anonymizers
+56,Dominican Republic,attacks
+57,East Timor,anonymizers
+58,Ecuador,attacks
+59,Egypt,attacks
+60,El Salvador,spam
+61,Equatorial Guinea,attacks
+62,Estonia,malware
+63,Eswatini,spam
+64,Ethiopia,anonymizers
+65,Faroe Islands,anonymizers
+66,Fiji,anonymizers
+67,Finland,organizations
+68,France,attacks
+69,French Guiana,anonymizers
+70,French Polynesia,anonymizers
+71,Gabon,attacks
+72,Gambia,spam
+73,Georgia,anonymizers
+74,Germany,organizations
+75,Ghana,attacks
+76,Gibraltar,attacks
+77,Greece,spam
+78,Greenland,anonymizers
+79,Grenada,anonymizers
+80,Guadeloupe,anonymizers
+81,Guam,attacks
+82,Guatemala,attacks
+83,Guernsey,anonymizers
+84,Guinea,anonymizers
+85,Guinea-Bissau,anonymizers
+86,Guyana,anonymizers
+87,Haiti,spam
+88,Hashemite Kingdom of Jordan,attacks
+89,Honduras,anonymizers
+90,Hong Kong,attacks
+91,Hungary,attacks
+92,Iceland,attacks
+93,India,attacks
+94,Indonesia,anonymizers
+95,Iran,attacks
+96,Iraq,spam
+97,Ireland,attacks
+98,Isle of Man,attacks
+99,Israel,attacks
+100,Italy,attacks
+101,Ivory Coast,spam
+102,Jamaica,spam
+103,Japan,attacks
+104,Jersey,organizations
+105,Kazakhstan,malware
+106,Kenya,spam
+107,Kiribati,anonymizers
+108,Kosovo,spam
+109,Kuwait,spam
+110,Kyrgyzstan,malware
+111,Laos,attacks
+112,Latvia,attacks
+113,Lebanon,spam
+114,Lesotho,anonymizers
+115,Liberia,anonymizers
+116,Libya,spam
+117,Liechtenstein,anonymizers
+118,Luxembourg,attacks
+119,Macao,attacks
+120,Madagascar,anonymizers
+121,Malawi,anonymizers
+122,Malaysia,attacks
+123,Maldives,attacks
+124,Mali,attacks
+125,Malta,attacks
+126,Marshall Islands,anonymizers
+127,Martinique,attacks
+128,Mauritania,anonymizers
+129,Mauritius,spam
+130,Mayotte,anonymizers
+131,Mexico,attacks
+132,Monaco,organizations
+133,Mongolia,anonymizers
+134,Montenegro,attacks
+135,Morocco,spam
+136,Mozambique,attacks
+137,Myanmar,spam
+138,Namibia,spam
+139,Nepal,attacks
+140,Netherlands,attacks
+141,New Caledonia,attacks
+142,New Zealand,attacks
+143,Nicaragua,attacks
+144,Niger,spam
+145,Nigeria,anonymizers
+146,Norfolk Island,anonymizers
+147,North Korea,anonymizers
+148,North Macedonia,spam
+149,Northern Mariana Islands,anonymizers
+150,Norway,attacks
+151,Oman,attacks
+152,Pakistan,spam
+153,Palau,anonymizers
+154,Palestine,anonymizers
+155,Panama,attacks
+156,Papua New Guinea,attacks
+157,Paraguay,attacks
+158,Peru,spam
+159,Philippines,attacks
+160,Poland,attacks
+161,Portugal,attacks
+162,Puerto Rico,anonymizers
+163,Qatar,spam
+164,Republic of Lithuania,attacks
+165,Republic of Moldova,anonymizers
+166,Romania,malware
+167,Russia,attacks
+168,Rwanda,spam
+169,Réunion,attacks
+170,Saint Lucia,anonymizers
+171,Saint Martin,anonymizers
+172,Saint Vincent and the Grenadines,anonymizers
+173,Samoa,spam
+174,San Marino,anonymizers
+175,Saudi Arabia,spam
+176,Senegal,spam
+177,Serbia,attacks
+178,Seychelles,attacks
+179,Sierra Leone,anonymizers
+180,Singapore,attacks
+181,Sint Maarten,anonymizers
+182,Slovakia,attacks
+183,Slovenia,attacks
+184,Solomon Islands,anonymizers
+185,Somalia,anonymizers
+186,South Africa,attacks
+187,South Korea,attacks
+188,South Sudan,anonymizers
+189,Spain,attacks
+190,Sri Lanka,spam
+191,St Kitts and Nevis,anonymizers
+192,Sudan,spam
+193,Suriname,attacks
+194,Sweden,attacks
+195,Switzerland,attacks
+196,Syria,anonymizers
+197,São Tomé and Príncipe,anonymizers
+198,Taiwan,reputation
+199,Tajikistan,reputation
+200,Tanzania,spam
+201,Thailand,anonymizers
+202,Togo,anonymizers
+203,Tonga,anonymizers
+204,Trinidad and Tobago,spam
+205,Tunisia,spam
+206,Turkey,reputation
+207,Turkmenistan,spam
+208,Turks and Caicos Islands,anonymizers
+209,U.S. Virgin Islands,organizations
+210,Uganda,attacks
+211,Ukraine,malware
+212,United Arab Emirates,attacks
+213,United Kingdom,attacks
+214,United States,attacks
+215,Uruguay,spam
+216,Uzbekistan,spam
+217,Vanuatu,anonymizers
+218,Vatican City,anonymizers
+219,Venezuela,attacks
+220,Vietnam,spam
+221,Yemen,anonymizers
+222,Zambia,attacks
+223,Zimbabwe,attacks
+224,Åland,anonymizers

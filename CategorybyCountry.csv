@@ -1,0 +1,242 @@
+,Country,Category
+0,Afghanistan,abuse
+1,Albania,abuse
+2,Algeria,abuse
+3,American Samoa,abuse
+4,Andorra,malware
+5,Angola,abuse
+6,Anguilla,abuse
+7,Antarctica,abuse
+8,Antigua and Barbuda,abuse
+9,Argentina,attacks
+10,Armenia,abuse
+11,Aruba,malware
+12,Australia,abuse
+13,Austria,abuse
+14,Azerbaijan,spam
+15,Bahamas,abuse
+16,Bahrain,reputation
+17,Bangladesh,abuse
+18,Barbados,abuse
+19,Belarus,abuse
+20,Belgium,abuse
+21,Belize,abuse
+22,Benin,abuse
+23,Bermuda,abuse
+24,Bhutan,abuse
+25,Bolivia,abuse
+26,"Bonaire, Sint Eustatius, and Saba",abuse
+27,Bosnia and Herzegovina,abuse
+28,Botswana,abuse
+29,Brazil,attacks
+30,British Virgin Islands,reputation
+31,Brunei,abuse
+32,Bulgaria,abuse
+33,Burkina Faso,abuse
+34,Burundi,abuse
+35,Cabo Verde,abuse
+36,Cambodia,abuse
+37,Cameroon,abuse
+38,Canada,abuse
+39,Cayman Islands,abuse
+40,Central African Republic,abuse
+41,Chad,abuse
+42,Chile,abuse
+43,China,attacks
+44,Christmas Island,abuse
+45,Cocos [Keeling] Islands,abuse
+46,Colombia,abuse
+47,Comoros,abuse
+48,Congo Republic,abuse
+49,Cook Islands,abuse
+50,Costa Rica,abuse
+51,Croatia,abuse
+52,Cuba,abuse
+53,Curaçao,abuse
+54,Cyprus,abuse
+55,Czechia,abuse
+56,DR Congo,abuse
+57,Denmark,abuse
+58,Djibouti,abuse
+59,Dominica,abuse
+60,Dominican Republic,abuse
+61,East Timor,abuse
+62,Ecuador,abuse
+63,Egypt,abuse
+64,El Salvador,abuse
+65,Equatorial Guinea,abuse
+66,Eritrea,abuse
+67,Estonia,abuse
+68,Eswatini,spam
+69,Ethiopia,spam
+70,Falkland Islands,abuse
+71,Faroe Islands,abuse
+72,Fiji,spam
+73,Finland,abuse
+74,France,abuse
+75,French Guiana,reputation
+76,French Polynesia,abuse
+77,Gabon,abuse
+78,Gambia,abuse
+79,Georgia,abuse
+80,Germany,abuse
+81,Ghana,abuse
+82,Gibraltar,abuse
+83,Greece,abuse
+84,Greenland,abuse
+85,Grenada,abuse
+86,Guadeloupe,abuse
+87,Guam,abuse
+88,Guatemala,abuse
+89,Guernsey,abuse
+90,Guinea,abuse
+91,Guinea-Bissau,abuse
+92,Guyana,abuse
+93,Haiti,abuse
+94,Hashemite Kingdom of Jordan,abuse
+95,Honduras,abuse
+96,Hong Kong,abuse
+97,Hungary,abuse
+98,Iceland,abuse
+99,India,abuse
+100,Indonesia,abuse
+101,Iran,abuse
+102,Iraq,abuse
+103,Ireland,abuse
+104,Isle of Man,attacks
+105,Israel,abuse
+106,Italy,abuse
+107,Ivory Coast,abuse
+108,Jamaica,abuse
+109,Japan,abuse
+110,Jersey,abuse
+111,Kazakhstan,abuse
+112,Kenya,abuse
+113,Kiribati,abuse
+114,Kosovo,spam
+115,Kuwait,spam
+116,Kyrgyzstan,abuse
+117,Laos,abuse
+118,Latvia,abuse
+119,Lebanon,abuse
+120,Lesotho,abuse
+121,Liberia,abuse
+122,Libya,spam
+123,Liechtenstein,abuse
+124,Luxembourg,abuse
+125,Macao,attacks
+126,Madagascar,abuse
+127,Malawi,abuse
+128,Malaysia,abuse
+129,Maldives,abuse
+130,Mali,abuse
+131,Malta,attacks
+132,Marshall Islands,abuse
+133,Martinique,attacks
+134,Mauritania,abuse
+135,Mauritius,spam
+136,Mayotte,attacks
+137,Mexico,abuse
+138,Monaco,abuse
+139,Mongolia,abuse
+140,Montenegro,abuse
+141,Montserrat,abuse
+142,Morocco,abuse
+143,Mozambique,abuse
+144,Myanmar,abuse
+145,Namibia,abuse
+146,Nauru,abuse
+147,Nepal,abuse
+148,Netherlands,abuse
+149,New Caledonia,attacks
+150,New Zealand,abuse
+151,Nicaragua,abuse
+152,Niger,spam
+153,Nigeria,abuse
+154,Niue,abuse
+155,Norfolk Island,abuse
+156,North Korea,abuse
+157,North Macedonia,abuse
+158,Northern Mariana Islands,abuse
+159,Norway,abuse
+160,Oman,abuse
+161,Pakistan,abuse
+162,Palau,abuse
+163,Palestine,abuse
+164,Panama,attacks
+165,Papua New Guinea,attacks
+166,Paraguay,attacks
+167,Peru,spam
+168,Philippines,abuse
+169,Pitcairn Islands,abuse
+170,Poland,abuse
+171,Portugal,abuse
+172,Puerto Rico,abuse
+173,Qatar,abuse
+174,Republic of Lithuania,attacks
+175,Republic of Moldova,abuse
+176,Romania,abuse
+177,Russia,abuse
+178,Rwanda,abuse
+179,Réunion,abuse
+180,Saint Helena,abuse
+181,Saint Lucia,abuse
+182,Saint Martin,abuse
+183,Saint Pierre and Miquelon,abuse
+184,Saint Vincent and the Grenadines,abuse
+185,Samoa,abuse
+186,San Marino,abuse
+187,Saudi Arabia,spam
+188,Senegal,abuse
+189,Serbia,abuse
+190,Seychelles,abuse
+191,Sierra Leone,abuse
+192,Singapore,abuse
+193,Sint Maarten,abuse
+194,Slovakia,abuse
+195,Slovenia,abuse
+196,Solomon Islands,abuse
+197,Somalia,abuse
+198,South Africa,abuse
+199,South Korea,abuse
+200,South Sudan,abuse
+201,Spain,abuse
+202,Sri Lanka,abuse
+203,St Kitts and Nevis,abuse
+204,Sudan,spam
+205,Suriname,abuse
+206,Svalbard and Jan Mayen,abuse
+207,Sweden,abuse
+208,Switzerland,abuse
+209,Syria,abuse
+210,São Tomé and Príncipe,abuse
+211,Taiwan,reputation
+212,Tajikistan,abuse
+213,Tanzania,abuse
+214,Thailand,abuse
+215,Togo,abuse
+216,Tokelau,abuse
+217,Tonga,reputation
+218,Trinidad and Tobago,abuse
+219,Tunisia,abuse
+220,Turkey,abuse
+221,Turkmenistan,spam
+222,Turks and Caicos Islands,abuse
+223,Tuvalu,abuse
+224,U.S. Minor Outlying Islands,abuse
+225,U.S. Virgin Islands,abuse
+226,Uganda,abuse
+227,Ukraine,malware
+228,United Arab Emirates,abuse
+229,United Kingdom,abuse
+230,United States,abuse
+231,Uruguay,spam
+232,Uzbekistan,abuse
+233,Vanuatu,abuse
+234,Vatican City,abuse
+235,Venezuela,abuse
+236,Vietnam,abuse
+237,Yemen,abuse
+238,Zambia,abuse
+239,Zimbabwe,abuse
+240,Åland,abuse

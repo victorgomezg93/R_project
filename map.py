@@ -19,7 +19,7 @@ fig = go.Figure(data=go.Choropleth(
 ))
 
 fig.update_layout(
-    title_text='2018 Global Risk',
+    title_text='Global Risk',
     geo=dict(
         showframe=False,
         showcoastlines=False,
