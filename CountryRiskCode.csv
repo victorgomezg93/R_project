@@ -25,175 +25,173 @@
 23,Bosnia and Herzegovina,0.5734177835928506,BIH,abuse,attacks
 24,Botswana,0.2577495667944028,BWA,abuse,attacks
 25,Brazil,0.7769681493185449,BRA,attacks,attacks
-26,British Virgin Islands,10.200657673981611,VGB,reputation,reputation
-27,Bulgaria,1.289966026101703,BGR,abuse,attacks
-28,Burkina Faso,0.008151265205463777,BFA,abuse,anonymizers
-29,Burundi,0.009932549932539194,BDI,abuse,attacks
-30,Cabo Verde,0.21884373270169022,CPV,abuse,anonymizers
-31,Cambodia,0.43317461546291225,KHM,abuse,anonymizers
-32,Cameroon,0.1583106948114423,CMR,abuse,spam
-33,Canada,1.1684656428681985,CAN,abuse,attacks
-34,Cayman Islands,2.2127341290865457,CYM,abuse,anonymizers
-35,Central African Republic,0.0032144852419768058,CAF,abuse,anonymizers
-36,Chad,0.0032304434927270765,TCD,abuse,attacks
-37,Chile,0.41779770155201834,CHL,abuse,attacks
-38,China,0.16217572680993445,CHN,attacks,attacks
-39,Colombia,0.2858685985338786,COL,abuse,attacks
-40,Comoros,0.03243936841751149,COM,abuse,anonymizers
-41,Congo Republic,0.02631396796903647,COG,abuse,anonymizers
-42,Costa Rica,0.24382725988765544,CRI,abuse,attacks
-43,Croatia,0.6032669829314814,HRV,abuse,spam
-44,Cuba,0.008290602919103648,CUB,abuse,spam
-45,Cyprus,0.8686037174221053,CYP,abuse,reputation
-46,Czechia,1.0225213503681407,CZE,abuse,attacks
-47,DR Congo,0.004246557709987729,COD,abuse,attacks
-48,Denmark,0.7477430578913542,DNK,abuse,attacks
-49,Djibouti,0.053184832937054186,DJI,abuse,anonymizers
-50,Dominica,1.0610820244328099,DMA,abuse,anonymizers
-51,Dominican Republic,0.17935168974980628,DOM,abuse,attacks
-52,Ecuador,0.3919374899506022,ECU,abuse,attacks
-53,Egypt,0.16760208769045673,EGY,abuse,attacks
-54,El Salvador,0.08846326843119738,SLV,abuse,spam
-55,Equatorial Guinea,0.06493635473279072,GNQ,abuse,attacks
-56,Estonia,3.683139473261846,EST,abuse,malware
-57,Eswatini,0.09417430696071348,SWZ,spam,spam
-58,Ethiopia,0.007589868135791694,ETH,spam,anonymizers
-59,Faroe Islands,0.4536363074004578,FRO,abuse,anonymizers
-60,Fiji,0.10639706706297689,FJI,spam,anonymizers
-61,Finland,0.9352941709480704,FIN,abuse,organizations
-62,France,0.863029982245575,FRA,abuse,attacks
-63,French Polynesia,0.09723457661544445,PYF,abuse,anonymizers
-64,Gabon,0.10380908565429216,GAB,abuse,attacks
-65,Georgia,0.6494237469847226,GEO,abuse,anonymizers
-66,Germany,1.0011826897097458,DEU,abuse,organizations
-67,Ghana,0.10135348049262966,GHA,abuse,attacks
-68,Gibraltar,1.1566522332285425,GIB,abuse,attacks
-69,Greece,0.43839910034501445,GRC,abuse,spam
-70,Greenland,0.3034359660865685,GRL,abuse,anonymizers
-71,Grenada,0.4037540151093725,GRD,abuse,anonymizers
-72,Guam,0.36798417064813477,GUM,abuse,attacks
-73,Guatemala,0.049049713972332834,GTM,abuse,attacks
-74,Guinea,0.020379693834167933,GIN,abuse,anonymizers
-75,Guinea-Bissau,0.006402359482881424,GNB,abuse,anonymizers
-76,Guyana,0.2195110679791118,GUY,abuse,anonymizers
-77,Haiti,0.015013697526677633,HTI,abuse,spam
-78,Hashemite Kingdom of Jordan,0.09903564791159833,JOR,abuse,attacks
-79,Honduras,0.34127692223287726,HND,abuse,anonymizers
-80,Hungary,0.7467663583546982,HUN,abuse,attacks
-81,Iceland,3.0318971417581606,ISL,abuse,attacks
-82,India,0.14459669852758236,IND,abuse,attacks
-83,Indonesia,0.2382880575376312,IDN,abuse,anonymizers
-84,Iran,0.19036612214563745,IRN,abuse,attacks
-85,Iraq,0.08422317971774697,IRQ,abuse,spam
-86,Ireland,1.5887484222745372,IRL,abuse,attacks
-87,Isle of Man,3.199448124933097,IMN,attacks,attacks
-88,Israel,0.4811004299961728,ISR,abuse,attacks
-89,Italy,0.47913925640135757,ITA,abuse,attacks
-90,Ivory Coast,0.02253758980780781,CIV,abuse,spam
-91,Jamaica,0.2167057657022238,JAM,abuse,spam
-92,Japan,0.16163080271652924,JPN,abuse,attacks
-93,Kazakhstan,0.41988347987215713,KAZ,abuse,malware
-94,Kenya,0.08983711987291657,KEN,abuse,spam
-95,Kiribati,0.1985377264840695,KIR,abuse,anonymizers
-96,Kosovo,0.01788327101284344,XKX,spam,spam
-97,Kuwait,0.24194470367091267,KWT,spam,spam
-98,Kyrgyzstan,0.2716995471674214,KGZ,abuse,malware
-99,Laos,0.5269413455229882,LAO,abuse,attacks
-100,Latvia,2.4380470293406526,LVA,abuse,attacks
-101,Lebanon,0.18586858521592806,LBN,abuse,spam
-102,Lesotho,0.053601956613722475,LSO,abuse,anonymizers
-103,Liberia,0.023241447303027178,LBR,abuse,anonymizers
-104,Libya,0.0926845534378857,LBY,spam,spam
-105,Liechtenstein,1.8728567660247954,LIE,abuse,anonymizers
-106,Luxembourg,2.690348313719295,LUX,abuse,attacks
-107,Madagascar,0.023798310952005547,MDG,abuse,anonymizers
-108,Malawi,0.023093905386088485,MWI,abuse,anonymizers
-109,Malaysia,0.35862694123443856,MYS,abuse,attacks
-110,Maldives,0.7504421209394683,MDV,abuse,attacks
-111,Mali,0.00912060107906146,MLI,abuse,attacks
-112,Malta,1.5428205075176307,MLT,attacks,attacks
-113,Marshall Islands,0.10271686097272867,MHL,abuse,anonymizers
-114,Mauritania,0.012036375288731069,MRT,abuse,anonymizers
-115,Mauritius,0.795856802678884,MUS,spam,spam
-116,Mexico,0.10499974055158448,MEX,abuse,attacks
-117,Monaco,2.7144408251900107,MCO,abuse,organizations
-118,Mongolia,0.3734770715360001,MNG,abuse,anonymizers
-119,Montenegro,0.8644722782379548,MNE,abuse,attacks
-120,Morocco,0.16916863234418764,MAR,abuse,spam
-121,Mozambique,0.015595355052328858,MOZ,abuse,attacks
-122,Myanmar,0.022175304251784104,MMR,abuse,spam
-123,Namibia,0.10824035894953753,NAM,abuse,spam
-124,Nauru,0.9445843828715365,NRU,abuse,No data
-125,Nepal,0.18228508668385723,NPL,abuse,attacks
-126,Netherlands,2.96970283297846,NLD,abuse,attacks
-127,New Caledonia,2.235443216221925,NCL,attacks,attacks
-128,New Zealand,0.3461262920888343,NZL,abuse,attacks
-129,Nicaragua,0.07114671333891062,NIC,abuse,attacks
-130,Niger,0.006594499082740823,NER,spam,spam
-131,Nigeria,0.028885807327682984,NGA,abuse,anonymizers
-132,North Macedonia,0.6759617812745143,MKD,abuse,spam
-133,Northern Mariana Islands,0.07032101543546289,MNP,abuse,anonymizers
-134,Norway,0.9082978569665148,NOR,abuse,attacks
-135,Oman,0.17123986149242063,OMN,abuse,attacks
-136,Pakistan,0.26819495301534485,PAK,abuse,spam
-137,Palau,0.7818171664712124,PLW,abuse,anonymizers
-138,Panama,0.38330109629859466,PAN,attacks,attacks
-139,Papua New Guinea,0.012432729637164148,PNG,attacks,attacks
-140,Paraguay,0.18674334980192123,PRY,attacks,attacks
-141,Peru,0.13004366215957008,PER,spam,spam
-142,Philippines,0.11990407449009685,PHL,abuse,attacks
-143,Poland,0.9218361902619342,POL,abuse,attacks
-144,Portugal,0.4739460026404035,PRT,abuse,attacks
-145,Puerto Rico,0.18559361633073596,PRI,abuse,anonymizers
-146,Qatar,0.24517584176739426,QAT,abuse,spam
-147,Republic of Lithuania,1.6547572658219134,LTU,attacks,attacks
-148,Republic of Moldova,1.2417217375756617,MDA,abuse,anonymizers
-149,Romania,0.8129327322427269,ROU,abuse,malware
-150,Russia,1.6562792756408327,RUS,abuse,attacks
-151,Rwanda,0.014713127743520758,RWA,abuse,spam
-152,Samoa,0.275327588844134,WSM,abuse,spam
-153,San Marino,0.8287701642740861,SMR,abuse,anonymizers
-154,Saudi Arabia,0.1465284203562694,SAU,spam,spam
-155,Senegal,0.07234602973566892,SEN,abuse,spam
-156,Serbia,0.6969265909719791,SRB,abuse,attacks
-157,Seychelles,12.866621194270477,SYC,abuse,attacks
-158,Sierra Leone,0.015555242417342187,SLE,abuse,anonymizers
-159,Singapore,3.849130540573709,SGP,abuse,attacks
-160,Slovakia,0.5401127333871732,SVK,abuse,attacks
-161,Slovenia,0.7013735312270843,SVN,abuse,attacks
-162,Solomon Islands,0.021444173158634804,SLB,abuse,anonymizers
-163,Somalia,0.01752380739163524,SOM,abuse,anonymizers
-164,South Africa,0.21848533380851817,ZAF,abuse,attacks
-165,South Korea,0.7307216604097014,KOR,abuse,attacks
-166,South Sudan,0.0017310621797534968,SSD,abuse,anonymizers
-167,Spain,0.4394767209283656,ESP,abuse,attacks
-168,Sri Lanka,0.08717120443008768,LKA,abuse,spam
-169,Sudan,0.014329618007071655,SDN,spam,spam
-170,Suriname,0.21701727978388552,SUR,abuse,attacks
-171,Sweden,1.9987872151858337,SWE,abuse,attacks
-172,Switzerland,0.6975835148134637,CHE,abuse,attacks
-173,Syria,0.026439874453775557,SYR,abuse,anonymizers
-174,Tajikistan,0.030326880923150258,TJK,abuse,reputation
-175,Tanzania,0.015465652508131096,TZA,abuse,spam
-176,Thailand,0.6484942701648101,THA,abuse,anonymizers
-177,Togo,0.04842127625808489,TGO,abuse,anonymizers
-178,Tonga,0.06783142920821342,TON,reputation,anonymizers
-179,Trinidad and Tobago,0.34607852025170915,TTO,abuse,spam
-180,Tunisia,0.26069579058008835,TUN,abuse,spam
-181,Turkey,0.2752438771539127,TUR,abuse,reputation
-182,Turkmenistan,0.00837476849747082,TKM,spam,spam
-183,Turks and Caicos Islands,0.9292446568432231,TCA,abuse,anonymizers
-184,Tuvalu,0.5213764337851929,TUV,abuse,No data
-185,Uganda,0.018093239824910807,UGA,abuse,attacks
-186,Ukraine,3.0749050546589527,UKR,malware,malware
-187,United Arab Emirates,0.2705857225640769,ARE,abuse,attacks
-188,United Kingdom,0.9965709962420696,GBR,abuse,attacks
-189,United States,1.5515664068203072,USA,abuse,attacks
-190,Uruguay,0.4609632276007386,URY,spam,spam
-191,Uzbekistan,0.04575881342663114,UZB,abuse,spam
-192,Vanuatu,0.11616782834495011,VUT,abuse,anonymizers
-193,Venezuela,0.21277999680985873,VEN,abuse,attacks
-194,Vietnam,1.106432519982778,VNM,abuse,spam
-195,Yemen,0.012807607592588388,YEM,abuse,anonymizers
-196,Zambia,0.03215800623127646,ZMB,abuse,attacks
-197,Zimbabwe,0.03428210976674452,ZWE,abuse,attacks
+26,Bulgaria,1.289966026101703,BGR,abuse,attacks
+27,Burkina Faso,0.008151265205463777,BFA,abuse,anonymizers
+28,Burundi,0.009932549932539194,BDI,abuse,attacks
+29,Cabo Verde,0.21884373270169022,CPV,abuse,anonymizers
+30,Cambodia,0.43317461546291225,KHM,abuse,anonymizers
+31,Cameroon,0.1583106948114423,CMR,abuse,spam
+32,Canada,1.1684656428681985,CAN,abuse,attacks
+33,Cayman Islands,2.2127341290865457,CYM,abuse,anonymizers
+34,Central African Republic,0.0032144852419768058,CAF,abuse,anonymizers
+35,Chad,0.0032304434927270765,TCD,abuse,attacks
+36,Chile,0.41779770155201834,CHL,abuse,attacks
+37,China,0.16217572680993445,CHN,attacks,attacks
+38,Colombia,0.2858685985338786,COL,abuse,attacks
+39,Comoros,0.03243936841751149,COM,abuse,anonymizers
+40,Congo Republic,0.02631396796903647,COG,abuse,anonymizers
+41,Costa Rica,0.24382725988765544,CRI,abuse,attacks
+42,Croatia,0.6032669829314814,HRV,abuse,spam
+43,Cuba,0.008290602919103648,CUB,abuse,spam
+44,Cyprus,0.8686037174221053,CYP,abuse,reputation
+45,Czechia,1.0225213503681407,CZE,abuse,attacks
+46,DR Congo,0.004246557709987729,COD,abuse,attacks
+47,Denmark,0.7477430578913542,DNK,abuse,attacks
+48,Djibouti,0.053184832937054186,DJI,abuse,anonymizers
+49,Dominica,1.0610820244328099,DMA,abuse,anonymizers
+50,Dominican Republic,0.17935168974980628,DOM,abuse,attacks
+51,Ecuador,0.3919374899506022,ECU,abuse,attacks
+52,Egypt,0.16760208769045673,EGY,abuse,attacks
+53,El Salvador,0.08846326843119738,SLV,abuse,spam
+54,Equatorial Guinea,0.06493635473279072,GNQ,abuse,attacks
+55,Estonia,3.683139473261846,EST,abuse,malware
+56,Eswatini,0.09417430696071348,SWZ,spam,spam
+57,Ethiopia,0.007589868135791694,ETH,spam,anonymizers
+58,Faroe Islands,0.4536363074004578,FRO,abuse,anonymizers
+59,Fiji,0.10639706706297689,FJI,spam,anonymizers
+60,Finland,0.9352941709480704,FIN,abuse,organizations
+61,France,0.863029982245575,FRA,abuse,attacks
+62,French Polynesia,0.09723457661544445,PYF,abuse,anonymizers
+63,Gabon,0.10380908565429216,GAB,abuse,attacks
+64,Georgia,0.6494237469847226,GEO,abuse,anonymizers
+65,Germany,1.0011826897097458,DEU,abuse,organizations
+66,Ghana,0.10135348049262966,GHA,abuse,attacks
+67,Gibraltar,1.1566522332285425,GIB,abuse,attacks
+68,Greece,0.43839910034501445,GRC,abuse,spam
+69,Greenland,0.3034359660865685,GRL,abuse,anonymizers
+70,Grenada,0.4037540151093725,GRD,abuse,anonymizers
+71,Guam,0.36798417064813477,GUM,abuse,attacks
+72,Guatemala,0.049049713972332834,GTM,abuse,attacks
+73,Guinea,0.020379693834167933,GIN,abuse,anonymizers
+74,Guinea-Bissau,0.006402359482881424,GNB,abuse,anonymizers
+75,Guyana,0.2195110679791118,GUY,abuse,anonymizers
+76,Haiti,0.015013697526677633,HTI,abuse,spam
+77,Hashemite Kingdom of Jordan,0.09903564791159833,JOR,abuse,attacks
+78,Honduras,0.34127692223287726,HND,abuse,anonymizers
+79,Hungary,0.7467663583546982,HUN,abuse,attacks
+80,Iceland,3.0318971417581606,ISL,abuse,attacks
+81,India,0.14459669852758236,IND,abuse,attacks
+82,Indonesia,0.2382880575376312,IDN,abuse,anonymizers
+83,Iran,0.19036612214563745,IRN,abuse,attacks
+84,Iraq,0.08422317971774697,IRQ,abuse,spam
+85,Ireland,1.5887484222745372,IRL,abuse,attacks
+86,Isle of Man,3.199448124933097,IMN,attacks,attacks
+87,Israel,0.4811004299961728,ISR,abuse,attacks
+88,Italy,0.47913925640135757,ITA,abuse,attacks
+89,Ivory Coast,0.02253758980780781,CIV,abuse,spam
+90,Jamaica,0.2167057657022238,JAM,abuse,spam
+91,Japan,0.16163080271652924,JPN,abuse,attacks
+92,Kazakhstan,0.41988347987215713,KAZ,abuse,malware
+93,Kenya,0.08983711987291657,KEN,abuse,spam
+94,Kiribati,0.1985377264840695,KIR,abuse,anonymizers
+95,Kosovo,0.01788327101284344,XKX,spam,spam
+96,Kuwait,0.24194470367091267,KWT,spam,spam
+97,Kyrgyzstan,0.2716995471674214,KGZ,abuse,malware
+98,Laos,0.5269413455229882,LAO,abuse,attacks
+99,Latvia,2.4380470293406526,LVA,abuse,attacks
+100,Lebanon,0.18586858521592806,LBN,abuse,spam
+101,Lesotho,0.053601956613722475,LSO,abuse,anonymizers
+102,Liberia,0.023241447303027178,LBR,abuse,anonymizers
+103,Libya,0.0926845534378857,LBY,spam,spam
+104,Liechtenstein,1.8728567660247954,LIE,abuse,anonymizers
+105,Luxembourg,2.690348313719295,LUX,abuse,attacks
+106,Madagascar,0.023798310952005547,MDG,abuse,anonymizers
+107,Malawi,0.023093905386088485,MWI,abuse,anonymizers
+108,Malaysia,0.35862694123443856,MYS,abuse,attacks
+109,Maldives,0.7504421209394683,MDV,abuse,attacks
+110,Mali,0.00912060107906146,MLI,abuse,attacks
+111,Malta,1.5428205075176307,MLT,attacks,attacks
+112,Marshall Islands,0.10271686097272867,MHL,abuse,anonymizers
+113,Mauritania,0.012036375288731069,MRT,abuse,anonymizers
+114,Mauritius,0.795856802678884,MUS,spam,spam
+115,Mexico,0.10499974055158448,MEX,abuse,attacks
+116,Monaco,2.7144408251900107,MCO,abuse,organizations
+117,Mongolia,0.3734770715360001,MNG,abuse,anonymizers
+118,Montenegro,0.8644722782379548,MNE,abuse,attacks
+119,Morocco,0.16916863234418764,MAR,abuse,spam
+120,Mozambique,0.015595355052328858,MOZ,abuse,attacks
+121,Myanmar,0.022175304251784104,MMR,abuse,spam
+122,Namibia,0.10824035894953753,NAM,abuse,spam
+123,Nauru,0.9445843828715365,NRU,abuse,No data
+124,Nepal,0.18228508668385723,NPL,abuse,attacks
+125,Netherlands,2.96970283297846,NLD,abuse,attacks
+126,New Caledonia,2.235443216221925,NCL,attacks,attacks
+127,New Zealand,0.3461262920888343,NZL,abuse,attacks
+128,Nicaragua,0.07114671333891062,NIC,abuse,attacks
+129,Niger,0.006594499082740823,NER,spam,spam
+130,Nigeria,0.028885807327682984,NGA,abuse,anonymizers
+131,North Macedonia,0.6759617812745143,MKD,abuse,spam
+132,Northern Mariana Islands,0.07032101543546289,MNP,abuse,anonymizers
+133,Norway,0.9082978569665148,NOR,abuse,attacks
+134,Oman,0.17123986149242063,OMN,abuse,attacks
+135,Pakistan,0.26819495301534485,PAK,abuse,spam
+136,Palau,0.7818171664712124,PLW,abuse,anonymizers
+137,Panama,0.38330109629859466,PAN,attacks,attacks
+138,Papua New Guinea,0.012432729637164148,PNG,attacks,attacks
+139,Paraguay,0.18674334980192123,PRY,attacks,attacks
+140,Peru,0.13004366215957008,PER,spam,spam
+141,Philippines,0.11990407449009685,PHL,abuse,attacks
+142,Poland,0.9218361902619342,POL,abuse,attacks
+143,Portugal,0.4739460026404035,PRT,abuse,attacks
+144,Puerto Rico,0.18559361633073596,PRI,abuse,anonymizers
+145,Qatar,0.24517584176739426,QAT,abuse,spam
+146,Republic of Lithuania,1.6547572658219134,LTU,attacks,attacks
+147,Republic of Moldova,1.2417217375756617,MDA,abuse,anonymizers
+148,Romania,0.8129327322427269,ROU,abuse,malware
+149,Russia,1.6562792756408327,RUS,abuse,attacks
+150,Rwanda,0.014713127743520758,RWA,abuse,spam
+151,Samoa,0.275327588844134,WSM,abuse,spam
+152,San Marino,0.8287701642740861,SMR,abuse,anonymizers
+153,Saudi Arabia,0.1465284203562694,SAU,spam,spam
+154,Senegal,0.07234602973566892,SEN,abuse,spam
+155,Serbia,0.6969265909719791,SRB,abuse,attacks
+156,Sierra Leone,0.015555242417342187,SLE,abuse,anonymizers
+157,Singapore,3.849130540573709,SGP,abuse,attacks
+158,Slovakia,0.5401127333871732,SVK,abuse,attacks
+159,Slovenia,0.7013735312270843,SVN,abuse,attacks
+160,Solomon Islands,0.021444173158634804,SLB,abuse,anonymizers
+161,Somalia,0.01752380739163524,SOM,abuse,anonymizers
+162,South Africa,0.21848533380851817,ZAF,abuse,attacks
+163,South Korea,0.7307216604097014,KOR,abuse,attacks
+164,South Sudan,0.0017310621797534968,SSD,abuse,anonymizers
+165,Spain,0.4394767209283656,ESP,abuse,attacks
+166,Sri Lanka,0.08717120443008768,LKA,abuse,spam
+167,Sudan,0.014329618007071655,SDN,spam,spam
+168,Suriname,0.21701727978388552,SUR,abuse,attacks
+169,Sweden,1.9987872151858337,SWE,abuse,attacks
+170,Switzerland,0.6975835148134637,CHE,abuse,attacks
+171,Syria,0.026439874453775557,SYR,abuse,anonymizers
+172,Tajikistan,0.030326880923150258,TJK,abuse,reputation
+173,Tanzania,0.015465652508131096,TZA,abuse,spam
+174,Thailand,0.6484942701648101,THA,abuse,anonymizers
+175,Togo,0.04842127625808489,TGO,abuse,anonymizers
+176,Tonga,0.06783142920821342,TON,reputation,anonymizers
+177,Trinidad and Tobago,0.34607852025170915,TTO,abuse,spam
+178,Tunisia,0.26069579058008835,TUN,abuse,spam
+179,Turkey,0.2752438771539127,TUR,abuse,reputation
+180,Turkmenistan,0.00837476849747082,TKM,spam,spam
+181,Turks and Caicos Islands,0.9292446568432231,TCA,abuse,anonymizers
+182,Tuvalu,0.5213764337851929,TUV,abuse,No data
+183,Uganda,0.018093239824910807,UGA,abuse,attacks
+184,Ukraine,3.0749050546589527,UKR,malware,malware
+185,United Arab Emirates,0.2705857225640769,ARE,abuse,attacks
+186,United Kingdom,0.9965709962420696,GBR,abuse,attacks
+187,United States,1.5515664068203072,USA,abuse,attacks
+188,Uruguay,0.4609632276007386,URY,spam,spam
+189,Uzbekistan,0.04575881342663114,UZB,abuse,spam
+190,Vanuatu,0.11616782834495011,VUT,abuse,anonymizers
+191,Venezuela,0.21277999680985873,VEN,abuse,attacks
+192,Vietnam,1.106432519982778,VNM,abuse,spam
+193,Yemen,0.012807607592588388,YEM,abuse,anonymizers
+194,Zambia,0.03215800623127646,ZMB,abuse,attacks
+195,Zimbabwe,0.03428210976674452,ZWE,abuse,attacks

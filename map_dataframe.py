@@ -11,7 +11,7 @@ def rewrite(df3):
 	"Czech Republic":"Czechia","Syrian Arab Republic":"Syria","Congo, Rep.":"Congo Republic",
 	"Slovak Republic":"Slovakia","Lithuania":"Republic of Lithuania","Moldova":"Republic of Moldova",
 	"Kyrgyz Republic":"Kyrgyzstan","Lao PDR":"Laos","Jordan":"Hashemite Kingdom of Jordan","Congo, Dem. Rep.":"DR Congo",
-	"Cote d'Ivoire":"Ivory Coast"}
+	"Cote d'Ivoire":"Ivory Coast","Seychelles":"NO","British Virgin Islands":"BR"}
 	df3 = df3.replace(d)
 	df3.to_csv("PopulationData/API_SP.POP.TOTL_DS2_en_csv_v2_566132.csv")
 	#for i in df3.iloc[0:,0]:
