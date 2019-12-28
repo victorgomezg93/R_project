@@ -3,7 +3,8 @@ import pandas as pd
 import plotly.graph_objects as go
 df = pd.read_csv('CountryRiskCode.csv')
 
-df['text'] = df['Code'] + '<br>' + \
+df['text'] = df['Country'] + '<br>' + \
+    df['Code'] + '<br>' + \
     'Main category: '  + df['Category'] + '<br>' + \
     'Category withouth abuse: ' + df['No Abuse'] 
 

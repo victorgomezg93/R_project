@@ -6,6 +6,18 @@ import datetime
 
 #Genera un dataframe amb els paisos amb el seu codi i el numero de risc donat
 
+def rewrite(df3):
+	d = {'Venezuela, RB':'Venezuela',"Egypt, Arab Rep.":"Egypt","Korea, Rep.":"South Korea","Iran, Islamic Rep.":"Iran","Yemen, Rep.":"Yemen",
+	"Czech Republic":"Czechia","Syrian Arab Republic":"Syria","Congo, Rep.":"Congo Republic",
+	"Slovak Republic":"Slovakia","Lithuania":"Republic of Lithuania","Moldova":"Republic of Moldova",
+	"Kyrgyz Republic":"Kyrgyzstan","Lao PDR":"Laos","Jordan":"Hashemite Kingdom of Jordan","Congo, Dem. Rep.":"DR Congo",
+	"Cote d'Ivoire":"Ivory Coast"}
+	df3 = df3.replace(d)
+	df3.to_csv("PopulationData/API_SP.POP.TOTL_DS2_en_csv_v2_566132.csv")
+	#for i in df3.iloc[0:,0]:
+		#if i == "Venezuela, RB":
+		#	df3.loc["Country Name","Venezuela, RB"] = "Venezuela"
+
 def correlation2(df3,df4,df6,df7):
 	#Es creen llistes buides que anem omplint amb les dades que ens interesen
 	normalized = []
@@ -33,8 +45,7 @@ def correlation2(df3,df4,df6,df7):
 					category.append(df6.at[it, 'Category'])
 			it2 = 0
 			t = False
-			for i2 in df7.iloc[0:,1]:				
-				#print (it2,i2,df7.at[it2, 'Category'])
+			for i2 in df7.iloc[0:,1]:		
 				if i2 == c:
 					category2.append(df7.at[it2, 'Category'])
 					t = True
@@ -57,11 +68,14 @@ def correlation2(df3,df4,df6,df7):
 
 #Es crean els dataframes i es criden les funcions
 
+
 df6 = pandas.read_csv(r"CategorybyCountry.csv")
 df7 = pandas.read_csv(r"CategorybyCountry_Noabuse.csv")
 df3 = pandas.read_csv(r"PopulationData/API_SP.POP.TOTL_DS2_en_csv_v2_566132.csv")
 df4 = pandas.read_csv(r"ipsbycountry.csv")
+# El rewrite cambia el dataframe para ajustar los nombres de paises pero
+# crea una columna extra en el csv que hay que borrar manualmente
+#rewrite(df3)
 df5 = correlation2(df3,df4,df6,df7)
-#df5.sort_values(by="Risk")
 df5.to_csv(r"CountryRiskCode.csv")
 
