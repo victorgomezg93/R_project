@@ -6,11 +6,13 @@ import datetime
 
 #Genera un dataframe amb els paisos amb el seu codi i el numero de risc donat
 
-def correlation2(df3,df4):
+def correlation2(df3,df4,df6,df7):
 	#Es creen llistes buides que anem omplint amb les dades que ens interesen
 	normalized = []
 	country = []
 	code = []
+	category = []
+	category2 = []
 	for c in df4.columns[2:]:
 		try:
 			a = int(df4[c])
@@ -24,20 +26,42 @@ def correlation2(df3,df4):
 				s = s+1
 				if cou == c:
 					code.append(df3.at[s, 'Country Code'])
+			it = -1
+			for i in df6.iloc[0:,1]:
+				it = it+1
+				if i == c:
+					category.append(df6.at[it, 'Category'])
+			it2 = 0
+			t = False
+			for i2 in df7.iloc[0:,1]:				
+				#print (it2,i2,df7.at[it2, 'Category'])
+				if i2 == c:
+					category2.append(df7.at[it2, 'Category'])
+					t = True
+				it2 = it2+1
+				if it2 == 225:
+					if t == False:
+						category2.append("No data")
+					t = False
+
 		except:
 			pass
-	aux = pandas.DataFrame(columns=["Country","Risk", "Code"])
+	aux = pandas.DataFrame(columns=["Country","Risk", "Code", "Category","No Abuse"])
 	aux["Country"] = country
 	aux["Risk"] = normalized
 	aux["Code"] = code
+	aux["Category"] = category
+	aux["No Abuse"] = category2
 
 	return aux
 
 #Es crean els dataframes i es criden les funcions
 
+df6 = pandas.read_csv(r"CategorybyCountry.csv")
+df7 = pandas.read_csv(r"CategorybyCountry_Noabuse.csv")
 df3 = pandas.read_csv(r"PopulationData/API_SP.POP.TOTL_DS2_en_csv_v2_566132.csv")
 df4 = pandas.read_csv(r"ipsbycountry.csv")
-df5 = correlation2(df3,df4)
+df5 = correlation2(df3,df4,df6,df7)
 #df5.sort_values(by="Risk")
 df5.to_csv(r"CountryRiskCode.csv")
 
