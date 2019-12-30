@@ -1,0 +1,1405 @@
+
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/LaTeX", "output/HTML-CSS"],
+    "HTML-CSS": { availableFonts: ["TeX"] }
+    });
+</script>
+
+<script type="text/javascript"
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<style>
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Raleway Light'), local('Raleway-Light'), url(http://fonts.gstatic.com/s/raleway/v9/-_Ctzj9b56b8RgXW8FArifk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'), url(http://fonts.gstatic.com/s/raleway/v9/0dTEPzkLWceF7z0koJaX1A.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Raleway SemiBold'), local('Raleway-SemiBold'), url(http://fonts.gstatic.com/s/raleway/v9/xkvoNo9fC8O2RDydKj12b_k_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+}
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+body {
+  margin: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden],
+template {
+  display: none;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,
+strong {
+  font-weight: bold;
+}
+dfn {
+  font-style: italic;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  border: 0;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+figure {
+  margin: 1em 40px;
+}
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+pre {
+  overflow: auto;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit; /* 1 */
+  font: inherit; /* 2 */
+  margin: 0; /* 3 */
+}
+button {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
+}
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+input {
+  line-height: normal;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box; /* 2 */
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+legend {
+  border: 0; /* 1 */
+  padding: 0; /* 2 */
+}
+textarea {
+  overflow: auto;
+}
+optgroup {
+  font-weight: bold;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+
+
+/*
+* Skeleton V2.0.4
+* Copyright 2014, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 12/29/2014
+*/
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box; }
+.column,
+.columns {
+  width: 100%;
+  float: left;
+  box-sizing: border-box; }
+@media (min-width: 400px) {
+  .container {
+    width: 85%;
+    padding: 0; }
+}
+@media (min-width: 550px) {
+  .container {
+    width: 80%; }
+  .column,
+  .columns {
+    margin-left: 4%; }
+  .column:first-child,
+  .columns:first-child {
+    margin-left: 0; }
+
+  .one.column,
+  .one.columns                    { width: 4.66666666667%; }
+  .two.columns                    { width: 13.3333333333%; }
+  .three.columns                  { width: 22%;            }
+  .four.columns                   { width: 30.6666666667%; }
+  .five.columns                   { width: 39.3333333333%; }
+  .six.columns                    { width: 48%;            }
+  .seven.columns                  { width: 56.6666666667%; }
+  .eight.columns                  { width: 65.3333333333%; }
+  .nine.columns                   { width: 74.0%;          }
+  .ten.columns                    { width: 82.6666666667%; }
+  .eleven.columns                 { width: 91.3333333333%; }
+  .twelve.columns                 { width: 100%; margin-left: 0; }
+
+  .one-third.column               { width: 30.6666666667%; }
+  .two-thirds.column              { width: 65.3333333333%; }
+
+  .one-half.column                { width: 48%; }
+
+  /* Offsets */
+  .offset-by-one.column,
+  .offset-by-one.columns          { margin-left: 8.66666666667%; }
+  .offset-by-two.column,
+  .offset-by-two.columns          { margin-left: 17.3333333333%; }
+  .offset-by-three.column,
+  .offset-by-three.columns        { margin-left: 26%;            }
+  .offset-by-four.column,
+  .offset-by-four.columns         { margin-left: 34.6666666667%; }
+  .offset-by-five.column,
+  .offset-by-five.columns         { margin-left: 43.3333333333%; }
+  .offset-by-six.column,
+  .offset-by-six.columns          { margin-left: 52%;            }
+  .offset-by-seven.column,
+  .offset-by-seven.columns        { margin-left: 60.6666666667%; }
+  .offset-by-eight.column,
+  .offset-by-eight.columns        { margin-left: 69.3333333333%; }
+  .offset-by-nine.column,
+  .offset-by-nine.columns         { margin-left: 78.0%;          }
+  .offset-by-ten.column,
+  .offset-by-ten.columns          { margin-left: 86.6666666667%; }
+  .offset-by-eleven.column,
+  .offset-by-eleven.columns       { margin-left: 95.3333333333%; }
+
+  .offset-by-one-third.column,
+  .offset-by-one-third.columns    { margin-left: 34.6666666667%; }
+  .offset-by-two-thirds.column,
+  .offset-by-two-thirds.columns   { margin-left: 69.3333333333%; }
+
+  .offset-by-one-half.column,
+  .offset-by-one-half.columns     { margin-left: 52%; }
+
+}
+html {
+  font-size: 62.5%; }
+body {
+  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222; }
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-weight: 300; }
+h1 { font-size: 3.6rem; line-height: 1.2;  letter-spacing: -.1rem;}
+h2 { font-size: 3.4rem; line-height: 1.25; letter-spacing: -.1rem; }
+h3 { font-size: 3.2rem; line-height: 1.3;  letter-spacing: -.1rem; }
+h4 { font-size: 2.8rem; line-height: 1.35; letter-spacing: -.08rem; }
+h5 { font-size: 2.4rem; line-height: 1.5;  letter-spacing: -.05rem; }
+h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
+
+p {
+  margin-top: 0; }
+a {
+  color: #1EAEDB; }
+a:hover {
+  color: #0FA0CE; }
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: #555;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  box-sizing: border-box; }
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  color: #333;
+  border-color: #888;
+  outline: 0; }
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+  color: #FFF;
+  background-color: #33C3F0;
+  border-color: #33C3F0; }
+.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:focus,
+button.button-primary:focus,
+input[type="submit"].button-primary:focus,
+input[type="reset"].button-primary:focus,
+input[type="button"].button-primary:focus {
+  color: #FFF;
+  background-color: #1EAEDB;
+  border-color: #1EAEDB; }
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  height: 38px;
+  padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box; }
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
+textarea {
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px; }
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #33C3F0;
+  outline: 0; }
+label,
+legend {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 600; }
+fieldset {
+  padding: 0;
+  border-width: 0; }
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline; }
+label > .label-body {
+  display: inline-block;
+  margin-left: .5rem;
+  font-weight: normal; }
+ul {
+  list-style: circle inside; }
+ol {
+  list-style: decimal inside; }
+ol, ul {
+  padding-left: 0;
+  margin-top: 0; }
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin: 1.5rem 0 1.5rem 3rem;
+  font-size: 90%; }
+li {
+  margin-bottom: 1rem; }
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #E1E1E1; }
+th:first-child,
+td:first-child {
+  padding-left: 0; }
+th:last-child,
+td:last-child {
+  padding-right: 0; }
+button,
+.button {
+  margin-bottom: 1rem; }
+input,
+textarea,
+select,
+fieldset {
+  margin-bottom: 1.5rem; }
+pre,
+blockquote,
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form {
+  margin-bottom: 2.5rem; }
+.u-full-width {
+  width: 100%;
+  box-sizing: border-box; }
+.u-max-full-width {
+  max-width: 100%;
+  box-sizing: border-box; }
+.u-pull-right {
+  float: right; }
+.u-pull-left {
+  float: left; }
+hr {
+  margin-top: 3rem;
+  margin-bottom: 3.5rem;
+  border-width: 0;
+  border-top: 1px solid #E1E1E1; }
+.container:after,
+.row:after,
+.u-cf {
+  content: "";
+  display: table;
+  clear: both; }
+
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}
+
+@media (min-width: 400px) {}
+@media (min-width: 550px) {}
+@media (min-width: 750px) {}
+@media (min-width: 1000px) {}
+@media (min-width: 1200px) {}
+
+</style>
+
+<style>
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */
+</style>
+
+
+
+
+
+<style>
+h1.title {margin-top : 20px}
+img {max-width : 100%}
+
+#From nbconvert
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+
+</HEAD>
+<BODY>
+    <div class ="container">
+        <div class = "row">
+            <div class = "col-md-12 twelve columns">
+<h1>Data Driven Security</h1>
+<h2>Introducción</h2>
+<h2>Recolección de los Datos</h2>
+<p>Se ha recogido datos de distintas fuentes para realizar un estudio sobre IPs maliciosas en blacklists.
+La información tratada se ha recogido de las siguientes fuentes:</p>
+<p><a href="https://github.com/firehol/blocklist-ipsets">Listas IPs maliciosas</a><br />
+<a href="https://dev.maxmind.com/geoip/geoip2/geolite2/">Base de datos de geolocalización</a><br />
+<a href="https://data.worldbank.org/indicator/SP.POP.TOTL">Datos de población</a></p>
+<p>Los datos obtenidos, se han parseado y limpiado para poder sacar la información relevante.
+De firehol se ha extraido la siguiente información : IP, Categoría, Quien matiene la lista donde aparece dicha ip y 
+fecha de la lista.
+De maxmind hemos obtenido la geolocalización de cada ip mediante su API.</p>
+<h2>Definición de funciones</h2>
+<p>A continuación definimos las funciones utilitzadas para el tratamiento de datos, hay que tener en cuenta que la función
+<em>getdataframe</em> tiene bastante coste temporal, por ello, es preferible guardar el dataframe en disco para luego cargarlo.</p>
+
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">geoip2.database</span> <span class="kn">as</span> <span class="nn">db</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="k">def</span> <span class="nf">getdataframe</span><span class="p">(</span><span class="n">source</span><span class="p">,</span><span class="n">dest</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">source</span><span class="p">,</span><span class="s2">&quot;*.ipset&quot;</span><span class="p">))</span>
+    <span class="n">dftotal</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;IP&quot;</span><span class="p">,</span><span class="s2">&quot;Category&quot;</span><span class="p">,</span><span class="s2">&quot;Maintainer&quot;</span><span class="p">,</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;./GeoLite2-Country_20191210/GeoLite2-Country.mmdb&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">ips</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">countrylist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">cat</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">main</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;IP&quot;</span><span class="p">,</span><span class="s2">&quot;Category&quot;</span><span class="p">,</span><span class="s2">&quot;Maintainer&quot;</span><span class="p">,</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>
+        <span class="n">aux</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">aux</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="n">aux</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span>  <span class="n">content</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;Category&quot;</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+                <span class="n">cat</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="s2">&quot;Maintainer&quot;</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+                <span class="n">main</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="s2">&quot;#&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+                <span class="n">ips</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+            <span class="k">elif</span> <span class="s2">&quot;This File Date&quot;</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+                <span class="n">date</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; : &quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">date</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="s2">&quot;%a %b </span><span class="si">%d</span><span class="s2"> %H:%M:%S UTC %Y&quot;</span><span class="p">))</span>
+                <span class="k">except</span><span class="p">:</span>
+                    <span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;IP&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ips</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Category&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">cat</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">ips</span><span class="p">)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Maintainer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">main</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">ips</span><span class="p">)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">date</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">ips</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ip</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">IP</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">country</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span><span class="o">.</span><span class="n">country</span><span class="o">.</span><span class="n">names</span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">]</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="n">countrylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Country&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">countrylist</span>
+        <span class="n">dftotal</span> <span class="o">=</span> <span class="n">dftotal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ignore_index</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dest</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dest</span><span class="p">):</span>
+        <span class="n">dftotal</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">dftotal</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">dest</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dftotal</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">dftotal</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">dropduplicates</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">groupcolumns</span><span class="p">):</span>
+    <span class="n">aux</span> <span class="o">=</span> <span class="n">df</span>
+    <span class="n">aux</span><span class="p">[</span><span class="s2">&quot;Occurrence&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">groupcolumns</span><span class="p">)</span><span class="o">.</span><span class="n">cumcount</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">aux</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="n">groupcolumns</span><span class="p">,</span> <span class="n">keep</span> <span class="o">=</span> <span class="s2">&quot;last&quot;</span><span class="p">)</span>
+</pre></div>
+
+<h2>Datos limpios</h2>
+<p>Con lo mencionado se ha generado el siguiente dataframe con toda la información limpia, con la primera linea generamos
+de nuevo el dataframe, con la segunda, cargamos uno preguardado.</p>
+
+<div class="highlight"><pre><span></span><span class="c1">#df = getdataframe(r&quot;C:\Users\Marc\Desktop\pers\datadriven\Practica\blocklist-ipsets-master&quot;)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\Marc\Desktop\pers\datadriven\Practica\brutedataframe_country_date.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>IP</th>
+      <th>Category</th>
+      <th>Maintainer</th>
+      <th>Country</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1.0.104.86</td>
+      <td>reputation</td>
+      <td>www.alienvault.com</td>
+      <td>Japan</td>
+      <td>2019-12-16 10:52:34</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1.0.130.91</td>
+      <td>reputation</td>
+      <td>www.alienvault.com</td>
+      <td>Thailand</td>
+      <td>2019-12-16 10:52:34</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>1.0.130.96</td>
+      <td>reputation</td>
+      <td>www.alienvault.com</td>
+      <td>Thailand</td>
+      <td>2019-12-16 10:52:34</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>1.0.130.127</td>
+      <td>reputation</td>
+      <td>www.alienvault.com</td>
+      <td>Thailand</td>
+      <td>2019-12-16 10:52:34</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>1.0.130.163</td>
+      <td>reputation</td>
+      <td>www.alienvault.com</td>
+      <td>Thailand</td>
+      <td>2019-12-16 10:52:34</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2773363</th>
+      <td>2773363</td>
+      <td>222.186.36.58</td>
+      <td>organizations</td>
+      <td>pgl.yoyo.orgadservers</td>
+      <td>China</td>
+      <td>2019-12-13 13:40:03</td>
+    </tr>
+    <tr>
+      <th>2773364</th>
+      <td>2773364</td>
+      <td>222.187.221.28</td>
+      <td>organizations</td>
+      <td>pgl.yoyo.orgadservers</td>
+      <td>China</td>
+      <td>2019-12-13 13:40:03</td>
+    </tr>
+    <tr>
+      <th>2773365</th>
+      <td>2773365</td>
+      <td>222.236.44.131</td>
+      <td>organizations</td>
+      <td>pgl.yoyo.orgadservers</td>
+      <td>South Korea</td>
+      <td>2019-12-13 13:40:03</td>
+    </tr>
+    <tr>
+      <th>2773366</th>
+      <td>2773366</td>
+      <td>223.165.25.36</td>
+      <td>organizations</td>
+      <td>pgl.yoyo.orgadservers</td>
+      <td>India</td>
+      <td>2019-12-13 13:40:03</td>
+    </tr>
+    <tr>
+      <th>2773367</th>
+      <td>2773367</td>
+      <td>223.165.31.15</td>
+      <td>organizations</td>
+      <td>pgl.yoyo.orgadservers</td>
+      <td>India</td>
+      <td>2019-12-13 13:40:03</td>
+    </tr>
+  </tbody>
+</table>
+<p>2773368 rows × 6 columns</p>
+</div>
+<p>Por último con la información de worldbank hemos generado un dataframe que contiene información relevante por país.</p>
+
+<div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\Marc\Desktop\pers\datadriven\Practica\PopulationData\API_SP.POP.TOTL_DS2_en_csv_v2_566132.csv&quot;</span><span class="p">)</span>
+<span class="n">df1</span>
+</pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country Name</th>
+      <th>Country Code</th>
+      <th>Indicator Name</th>
+      <th>Indicator Code</th>
+      <th>1960</th>
+      <th>1961</th>
+      <th>1962</th>
+      <th>1963</th>
+      <th>1964</th>
+      <th>1965</th>
+      <th>...</th>
+      <th>2011</th>
+      <th>2012</th>
+      <th>2013</th>
+      <th>2014</th>
+      <th>2015</th>
+      <th>2016</th>
+      <th>2017</th>
+      <th>2018</th>
+      <th>2019</th>
+      <th>Unnamed: 64</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Aruba</td>
+      <td>ABW</td>
+      <td>Population, total</td>
+      <td>SP.POP.TOTL</td>
+      <td>54211.0</td>
+      <td>55438.0</td>
+      <td>56225.0</td>
+      <td>56695.0</td>
+      <td>57032.0</td>
+      <td>57360.0</td>
+      <td>...</td>
+      <td>102046.0</td>
+      <td>102560.0</td>
+      <td>103159.0</td>
+      <td>103774.0</td>
+      <td>104341.0</td>
+      <td>104872.0</td>
+      <td>105366.0</td>
+      <td>105845.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Afghanistan</td>
+      <td>AFG</td>
+      <td>Population, total</td>
+      <td>SP.POP.TOTL</td>
+      <td>8996973.0</td>
+      <td>9169410.0</td>
+      <td>9351441.0</td>
+      <td>9543205.0</td>
+      <td>9744781.0</td>
+      <td>9956320.0</td>
+      <td>...</td>
+      <td>30117413.0</td>
+      <td>31161376.0</td>
+      <td>32269589.0</td>
+      <td>33370794.0</td>
+      <td>34413603.0</td>
+      <td>35383128.0</td>
+      <td>36296400.0</td>
+      <td>37172386.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Angola</td>
+      <td>AGO</td>
+      <td>Population, total</td>
+      <td>SP.POP.TOTL</td>
+      <td>5454933.0</td>
+      <td>5531472.0</td>
+      <td>5608539.0</td>
+      <td>5679458.0</td>
+      <td>5735044.0</td>
+      <td>5770570.0</td>
+      <td>...</td>
+      <td>24220661.0</td>
+      <td>25107931.0</td>
+      <td>26015780.0</td>
+      <td>26941779.0</td>
+      <td>27884381.0</td>
+      <td>28842484.0</td>
+      <td>29816748.0</td>
+      <td>30809762.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Albania</td>
+      <td>ALB</td>
+      <td>Population, total</td>
+      <td>SP.POP.TOTL</td>
+      <td>1608800.0</td>
+      <td>1659800.0</td>
+      <td>1711319.0</td>
+      <td>1762621.0</td>
+      <td>1814135.0</td>
+      <td>1864791.0</td>
+      <td>...</td>
+      <td>2905195.0</td>
+      <td>2900401.0</td>
+      <td>2895092.0</td>
+      <td>2889104.0</td>
+      <td>2880703.0</td>
+      <td>2876101.0</td>
+      <td>2873457.0</td>
+      <td>2866376.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Andorra</td>
+      <td>AND</td>
+      <td>Population, total</td>
+      <td>SP.POP.TOTL</td>
+      <td>13411.0</td>
+      <td>14375.0</td>
+      <td>15370.0</td>
+      <td>16412.0</td>
+      <td>17469.0</td>
+      <td>18549.0</td>
+      <td>...</td>
+      <td>83747.0</td>
+      <td>82427.0</td>
+      <td>80774.0</td>
+      <td>79213.0</td>
+      <td>78011.0</td>
+      <td>77297.0</td>
+      <td>77001.0</td>
+      <td>77006.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>259</th>
+      <td>Kosovo</td>
+      <td>XKX</td>
+      <td>Population, total</td>
+      <td>SP.POP.TOTL</td>
+      <td>947000.0</td>
+      <td>966000.0</td>
+      <td>994000.0</td>
+      <td>1022000.0</td>
+      <td>1050000.0</td>
+      <td>1078000.0</td>
+      <td>...</td>
+      <td>1791000.0</td>
+      <td>1805200.0</td>
+      <td>1824100.0</td>
+      <td>1821800.0</td>
+      <td>1801800.0</td>
+      <td>1816200.0</td>
+      <td>1830700.0</td>
+      <td>1845300.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>260</th>
+      <td>Yemen, Rep.</td>
+      <td>YEM</td>
+      <td>Population, total</td>
+      <td>SP.POP.TOTL</td>
+      <td>5315355.0</td>
+      <td>5393036.0</td>
+      <td>5473671.0</td>
+      <td>5556766.0</td>
+      <td>5641597.0</td>
+      <td>5727751.0</td>
+      <td>...</td>
+      <td>23807588.0</td>
+      <td>24473178.0</td>
+      <td>25147109.0</td>
+      <td>25823485.0</td>
+      <td>26497889.0</td>
+      <td>27168210.0</td>
+      <td>27834821.0</td>
+      <td>28498687.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>261</th>
+      <td>South Africa</td>
+      <td>ZAF</td>
+      <td>Population, total</td>
+      <td>SP.POP.TOTL</td>
+      <td>17099840.0</td>
+      <td>17524533.0</td>
+      <td>17965725.0</td>
+      <td>18423161.0</td>
+      <td>18896307.0</td>
+      <td>19384841.0</td>
+      <td>...</td>
+      <td>52004172.0</td>
+      <td>52834005.0</td>
+      <td>53689236.0</td>
+      <td>54545991.0</td>
+      <td>55386367.0</td>
+      <td>56203654.0</td>
+      <td>57000451.0</td>
+      <td>57779622.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>262</th>
+      <td>Zambia</td>
+      <td>ZMB</td>
+      <td>Population, total</td>
+      <td>SP.POP.TOTL</td>
+      <td>3070776.0</td>
+      <td>3164329.0</td>
+      <td>3260650.0</td>
+      <td>3360104.0</td>
+      <td>3463213.0</td>
+      <td>3570464.0</td>
+      <td>...</td>
+      <td>14023193.0</td>
+      <td>14465121.0</td>
+      <td>14926504.0</td>
+      <td>15399753.0</td>
+      <td>15879361.0</td>
+      <td>16363507.0</td>
+      <td>16853688.0</td>
+      <td>17351822.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>263</th>
+      <td>Zimbabwe</td>
+      <td>ZWE</td>
+      <td>Population, total</td>
+      <td>SP.POP.TOTL</td>
+      <td>3776681.0</td>
+      <td>3905034.0</td>
+      <td>4039201.0</td>
+      <td>4178726.0</td>
+      <td>4322861.0</td>
+      <td>4471177.0</td>
+      <td>...</td>
+      <td>12894316.0</td>
+      <td>13115131.0</td>
+      <td>13350356.0</td>
+      <td>13586681.0</td>
+      <td>13814629.0</td>
+      <td>14030390.0</td>
+      <td>14236745.0</td>
+      <td>14439018.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>264 rows × 65 columns</p>
+</div>
+<h2>Observaciones con datos de un día</h2>
+<p>Inicialmente se ha esbozado un primer estudio solo con los datos de un solo día obtenidos de firehol.
+Con ello se quiere realizar observaciones a pequeña escara antes de pasar a grandes conjuntos de datos.</p>
+<h3>Distribución de ips maliciosas por categoria</h3>
+<p>Se ha estudiado como se reparten las ips maliciosas en las distintas categorías definidas por firehol. </p>
+<p>A continuación se ha transformado la información ya limpia para representar correctamente lo que se quería observar.
+Para ello se ha usado la información recopilada en el datafrme df.
+Dado que df contenía ips repetidas en la misma categoría, se han llevado a cabo distintos pasos para agrupar 
+la información de forma conveniente.</p>
+<ul>
+<li>En primer lugar, se ha agrupado toda la información del dataframe por IP/categoría y a continguación se han
+eliminado los duplicados.</li>
+</ul>
+
+<div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">dropduplicates</span><span class="p">(</span><span class="n">df</span><span class="p">,[</span><span class="s2">&quot;IP&quot;</span><span class="p">,</span><span class="s2">&quot;Category&quot;</span><span class="p">])</span>
+<span class="n">df2</span>
+</pre></div>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>IP</th>
+      <th>Category</th>
+      <th>Maintainer</th>
+      <th>Country</th>
+      <th>Date</th>
+      <th>Occurrence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1.0.104.86</td>
+      <td>reputation</td>
+      <td>www.alienvault.com</td>
+      <td>Japan</td>
+      <td>2019-12-16 10:52:34</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1.0.130.91</td>
+      <td>reputation</td>
+      <td>www.alienvault.com</td>
+      <td>Thailand</td>
+      <td>2019-12-16 10:52:34</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>1.0.130.96</td>
+      <td>reputation</td>
+      <td>www.alienvault.com</td>
+      <td>Thailand</td>
+      <td>2019-12-16 10:52:34</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>1.0.130.127</td>
+      <td>reputation</td>
+      <td>www.alienvault.com</td>
+      <td>Thailand</td>
+      <td>2019-12-16 10:52:34</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>1.0.130.163</td>
+      <td>reputation</td>
+      <td>www.alienvault.com</td>
+      <td>Thailand</td>
+      <td>2019-12-16 10:52:34</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2773363</th>
+      <td>2773363</td>
+      <td>222.186.36.58</td>
+      <td>organizations</td>
+      <td>pgl.yoyo.orgadservers</td>
+      <td>China</td>
+      <td>2019-12-13 13:40:03</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2773364</th>
+      <td>2773364</td>
+      <td>222.187.221.28</td>
+      <td>organizations</td>
+      <td>pgl.yoyo.orgadservers</td>
+      <td>China</td>
+      <td>2019-12-13 13:40:03</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2773365</th>
+      <td>2773365</td>
+      <td>222.236.44.131</td>
+      <td>organizations</td>
+      <td>pgl.yoyo.orgadservers</td>
+      <td>South Korea</td>
+      <td>2019-12-13 13:40:03</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2773366</th>
+      <td>2773366</td>
+      <td>223.165.25.36</td>
+      <td>organizations</td>
+      <td>pgl.yoyo.orgadservers</td>
+      <td>India</td>
+      <td>2019-12-13 13:40:03</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2773367</th>
+      <td>2773367</td>
+      <td>223.165.31.15</td>
+      <td>organizations</td>
+      <td>pgl.yoyo.orgadservers</td>
+      <td>India</td>
+      <td>2019-12-13 13:40:03</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>1373455 rows × 7 columns</p>
+</div>
+<ul>
+<li>Por último, se ha pivotado la información para quedara una tabla representado lo que se quería observar.<pre><code>(tabla df2)
+</code></pre>
+</li>
+</ul>
+<p>Una vez tratados los datos podemos observar la siguiente distribuión según categoría:</p>
+<pre><code>(barpolt)
+
+(donutplot)
+</code></pre>
+<h3>Indice de peligrosidad por país</h3>
+<p>Los datos obtenidos se han utilitzado para observar y calcular un indice de peligrosidad por país.
+Para conseguir dicho indice se han usado los datos de df y df3. Para poder representar la información correctamente,
+se ha generado un nuevo dataframe que contiene el país con su indice calculado en base a
+ <strong>nº IPs maliciosas / Población</strong>.</p>
+<pre><code>(tabla df5)
+</code></pre>
+<h3>Distribución de categorías por país</h3>
+<h2>Observaciones temporales (Datos varios días)</h2>
+<p>Evolución temporal de ips por categoria</p>
+<p>Evolución temporal de países según peligrosidad</p>
+<p>Evolución temporal de categorías por país </p>
+<h2>Predicciónes</h2>
+<p>Predecir la posibilidad que una IP se vaya a incluir en blacklist y en que categoria se incluiria.</p>
+<h3>Datos relevantes para Predecir</h3>
+<p>Para poder entrenar un modelo de predicción hay que disponer de suficientes datos con atributos releventes
+diferenciados. De este modo y en base a los atributos se puede realizar la predicción.</p>
+<ul>
+<li>País de origen</li>
+<li>Veces en blacklist días distintos</li>
+<li>Veces en blacklist mismo día</li>
+<li>Tiempo en uso (mismo propietario)</li>
+<li>Categoría en blacklist</li>
+<li>Tiempo en blacklist</li>
+</ul>
+<h2>Tiempos de ejecucion</h2>
+<ul>
+<li>Parser -&gt; 617.61s 878.29s</li>
+<li>Drop duplicates -&gt; 9.66s</li>
+<li>spread -&gt; 8.47s</li>
+</ul>
+    <HR/>
+    <div class="footer">
+      <p>Published from <a href="C:\Users\Marc\Desktop\pers\datadriven\Practica\Documentacion.pmd">C:\Users\Marc\Desktop\pers\datadriven\Practica\Documentacion.pmd</a>
+    using <a href="http://mpastell.com/pweave">Pweave</a> 0.30.3
+    on 30-12-2019.<p></div>
+
+            </div>
+        </div>
+    </div>
+  </BODY>
+</HTML>
