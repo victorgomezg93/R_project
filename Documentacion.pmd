@@ -25,6 +25,8 @@ A continuación definimos las funciones utilitzadas para el tratamiento de datos
     import pandas
     import geoip2.database as db
     import datetime
+    from plotnine import *
+    import matplotlib.pyplot as plt
     
     def getdataframe(source,dest = ""):
         files = glob.glob(os.path.join(source,"*.ipset"))
@@ -66,8 +68,8 @@ A continuación definimos las funciones utilitzadas para el tratamiento de datos
             df["Country"] = countrylist
             dftotal = dftotal.append(df, ignore_index = True)
         if dest != "" and not os.path.exists(dest):
-            dftotal.drop(columns=dftotal.columns[0]).to_csv(dest)
-        return dftotal.drop(columns=dftotal.columns[0])
+            dftotal.to_csv(dest,index=False)
+        return dftotal
 
     def dropduplicates(df,groupcolumns):
         aux = df
@@ -104,7 +106,7 @@ Para ello se ha usado la información recopilada en el datafrme df.
 Dado que df contenía ips repetidas en la misma categoría, se han llevado a cabo distintos pasos para agrupar 
 la información de forma conveniente.
  
-* En primer lugar, se ha agrupado toda la información del dataframe por IP/categoría y a continguación se han
+En primer lugar, se ha agrupado toda la información del dataframe por IP/categoría y a continguación se han
 eliminado los duplicados.
 
 ```python, term=True
@@ -112,15 +114,41 @@ eliminado los duplicados.
     df2
 ```
 
-* Por último, se ha pivotado la información para quedara una tabla representado lo que se quería observar.
+Por último, se ha pivotado la información para quedara una tabla representado lo que se quería observar
+y se ha realizado una aggregado por columnas.
 
-        (tabla df2)
+```python, term=True
+    df3 = df2.pivot(index = "IP", columns = "Category", values = "Occurrence")
+    df3
+```
 
-Una vez tratados los datos podemos observar la siguiente distribuión según categoría:
+```python, term=True
+    a = df3.agg("sum")
+    a
+```
 
-    (barpolt)
+Con los datos obtenidos en distintas etapas del tratamieto,
+podemos representar de varias formas la distribuión según categoría:
 
-    (donutplot)
+```python, term=True
+    ggplot(df, aes(x="Category")) + geom_bar(stat = 'count')
+```
+
+```python, term=True
+    def donutplot(a):
+        fig = plt.figure()
+        fig.patch.set_facecolor("white")
+        plt.rcParams["text.color"] = "black"
+        my_circle = plt.Circle((0,0), 0.7, color="white")
+        plt.pie(a.values,labels=df3.columns)
+        p = plt.gcf()
+        p.gca().add_artist(my_circle)
+        return p
+```
+
+```python, term=True
+    p = donutplot(a)
+```
 
 ### Indice de peligrosidad por país
 Los datos obtenidos se han utilitzado para observar y calcular un indice de peligrosidad por país.

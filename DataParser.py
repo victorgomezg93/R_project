@@ -54,9 +54,9 @@ def getdataframe(source,dest = ""):
         
         dftotal = dftotal.append(df, ignore_index = True)
     if dest != "" and not os.path.exists(dest):
-        dftotal.drop(columns=dftotal.columns[0]).to_csv(dest)
+        dftotal.to_csv(dest,index=False)
 
-    return dftotal.drop(columns=dftotal.columns[0])
+    return dftotal
     
 def dropduplicates(df,groupcolumns):
     aux = df
