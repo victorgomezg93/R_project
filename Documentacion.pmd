@@ -326,3 +326,147 @@ Islandia y Holanda que se cuelan en la estadistica.
 Esto es debido a que estos paises al tener una legislación más laxa, son una oportunidad para la
 gente que le interese mantener bloques de IPs que pueden servir para atacar al resto de paises
 ya que así evitaran que les cierren estas o que les repecturan acciones legales.
+
+## Estudios generados a partir del Dataset de dos meses
+
+El estudio que hemos generado a partir del dataset de dos meses es algo diferente. En este caso,
+partiendo de que teniamos las IPs de dos meses, lo que hemos hecho es coger todos los dias en
+activo que ha tenido cada IP reportada como maliciosa y agruparlo por país de cara a ver que paises
+podían acumular mas días con bloques maliciosos reportados y confirmados.
+
+##  Distribución por dias
+
+Concretamente en este caso hemos utilizado 4 funciones y hemos generado 4 dataframes distintos
+hasta llegar al final que hemos utilizado para generar este último mapa.
+
+Primeramente hemos hecho el agregado de cuantos dias ha estado una IP activa en estos dos meses
+
+```python, term=True
+def days_repited2(df):
+	#Para sacar dias en total que una IP que se ha tenido en activo en dos meses
+	count_series = df.groupby(['ioc']).size()
+	new_df = count_series.to_frame(name = 'Dias').reset_index()
+	new_df.to_csv(r"IP_days_no_repeated.csv")
+```
+
+Esto nos permite ver cuantos dias se ha repetido esta IP como podemos ver en esta tabla
+
+```python, term=True
+    df9 = pandas.read_csv(r"/home/victor/Escritorio/R_project/copia/R_project/IP_days_no_repeated.csv")
+    df9
+```
+##  Distribución por paises
+
+Seguidamente hemos pensado que podíamos analizar de estos datos así que hemos decidido
+agrupar estas IPs por países de cara a consultar si los bloques reportados maliciosos solían
+aguantar mucho o no. 
+
+Para ello primero hemos tenido que averiguar el país de cada IP, así que hemos usado la siguiente
+función.
+
+```python, term=True
+def country(df1,dest = ""):
+	# Sacamos el pais de cada IP maliciosa
+	df = pandas.DataFrame(columns=["IP","Days","Country"])
+	dftotal = pandas.DataFrame(columns=["IP","Days","Country"])
+	reader = db.Reader(r"./GeoLite2-Country_20191210/GeoLite2-Country.mmdb")
+	ips = []
+	countrylist = []
+	days = []
+	s = 0
+	for ip in df1.iloc[0:,1]:
+		try:
+			c = reader.country(ip).country.names["en"]
+			countrylist.append(c)
+			ips.append(df1.at[s, 'ioc'])
+			days.append(df1.at[s, 'Dias'].astype(int))
+		except:
+			#c = ''
+			pass
+		s = s +1
+	df["IP"] = ips
+	df["days"] = days
+	df["Country"] = countrylist
+	dftotal = dftotal.append(df, ignore_index = True)
+	return dftotal
+```
+Una vez que teníamos el país, hemos hecho el agregado de cada país para ver cuantos dias
+acumulaban en total a partir de la siguiente función.
+
+```python, term=True
+def agg_country(df):
+	# Agrupamos en total cuantos dias acumula cada pais de IPs maliciosas. Para saber si 
+	# ese pais por ejemplo elimina rapido sus IPs reportadas como maliciosas
+	count_series = df.groupby(['Country']).size()
+	new_df = count_series.to_frame(name = 'Dias totales').reset_index()
+	new_df.to_csv(r"IP_days_total.csv")
+```
+El resultado era bastante interesante ya que se podía ver países que apenas acumulaban dias y
+paises que por el contrario acumulaban bastantes.
+
+El dataframe generado era el siguiente:
+
+```python, term=True
+    df10 = pandas.read_csv(r"/home/victor/Escritorio/R_project/copia/R_project/IP_days_total.csv")
+    df10
+```
+
+## Normalización para el uso del mapa y dataframe final
+
+Hemos tenido que generar otra vez el codigo para el uso del mapa con la siguiente función
+
+```python, term=True
+def code(df,df5):
+	# Para meter el codigo ya que sino el mapa no se genera.
+	s = -1
+	country = []
+	days = []
+	code = []
+	s1 = -1
+	for c in df.iloc[1:,1]:
+		s = -1
+		s1 = s1 +1
+		try:
+			for cou in df5.iloc[0:,0]:
+				s = s+1
+				if cou == c:
+					print (df5.at[s, 'Country Code'],df5.at[s, 'Country Name'])
+					code.append(df5.at[s, 'Country Code'])
+					country.append(df5.at[s, 'Country Name'])
+					days.append(df.at[s1, 'Dias totales'])
+		except:
+			pass		
+	aux = pandas.DataFrame(columns=["Country","Dias totales", "Code"])
+	aux["Country"] = country
+	aux["Dias totales"] = days
+	aux["Code"] = code
+	#El dataframe final usado para el mapa es este
+	aux.to_csv(r"IP_days_total_code.csv")
+```
+El dataframe final usado para el mapa es el siguiente:
+
+```python, term=True
+    df11 = pandas.read_csv(r"/home/victor/Escritorio/R_project/copia/R_project/IP_days_total_code.csv")
+    df11
+```
+
+## Segundo mapa
+
+Este mapa nos muestra el numero total de dias acumulados por cada país de sus IPs maliciosas
+reportadas en estos dos meses del dataframe.
+
+<iframe id="mapa" src="mapa2.html" width="1250" height="1000"  frameborder="1000"></iframe>
+
+## Conclusiones
+
+Las conclusiones que podemos sacar de este mapa son bastante curiosas. Principalmente podemos
+observar claramente que el país que más dias en activo mantiene bloques maliciosos de IPs es
+Uruguay. Uruguay precisamente no es uno de los paises más problematicos en este aspecto pero
+parece ser que tiene una politica de eliminación de contenido malicioso en Internet bastante pesima.
+
+Otro conjunto intenresante es el de Indonesia donde parece que tampoco hay mucha legislación
+para retirar contenido malicioso.
+
+Podemos observar donde en España y en general en el resto de Europa, los bloques maliciosos apenas
+duran pocos dias. Rusia o China a pesar de ser unos gigantes en cuanto a ataques maliciosos parece
+ser que tampoco mantienen en activo por mucho tiempo sus IPs problemáticas.
