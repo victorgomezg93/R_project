@@ -11,7 +11,7 @@ def rewrite(df3):
 	"Czech Republic":"Czechia","Syrian Arab Republic":"Syria","Congo, Rep.":"Congo Republic",
 	"Slovak Republic":"Slovakia","Lithuania":"Republic of Lithuania","Moldova":"Republic of Moldova",
 	"Kyrgyz Republic":"Kyrgyzstan","Lao PDR":"Laos","Jordan":"Hashemite Kingdom of Jordan","Congo, Dem. Rep.":"DR Congo",
-	"Cote d'Ivoire":"Ivory Coast","Seychelles":"NO","British Virgin Islands":"BR"}
+	"Cote d'Ivoire":"Ivory Coast","Seychelles":"Sey","British Virgin Islands":"BR","Russian Federation":"Russia"}
 	df3 = df3.replace(d)
 	df3.to_csv("PopulationData/API_SP.POP.TOTL_DS2_en_csv_v2_566132.csv")
 	#for i in df3.iloc[0:,0]:
@@ -58,6 +58,7 @@ def correlation2(df3,df4,df6,df7):
 		except:
 			pass
 	aux = pandas.DataFrame(columns=["Country","Risk", "Code", "Category","No Abuse"])
+	#aux = pandas.DataFrame(columns=["Country","Risk", "Code"])
 	aux["Country"] = country
 	aux["Risk"] = normalized
 	aux["Code"] = code
@@ -78,4 +79,5 @@ df4 = pandas.read_csv(r"ipsbycountry.csv")
 #rewrite(df3)
 df5 = correlation2(df3,df4,df6,df7)
 df5.to_csv(r"CountryRiskCode.csv")
+#df5.to_csv(r"CountryRiskCode_simple.csv")
 
