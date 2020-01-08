@@ -1,22 +1,40 @@
-# Data Driven Security
+---
+#DATA DRIVEN SECURITY
+
+
+Victor Gómez Gamero
+Marc Portavella Boixader
+
+---
 
 ## Introducción
 
+El siguiente informe recoge un estudio de datos para la asignatura data driven security.
+Para ello se ha escogido la temática de *threat intelligence* donde se analizan datos sobre IPs maliciosas.
+
+Con este estudio se pretende llevar a cabo una primera toma de contacto con un conjunto de datos bastante grande sobre
+Ips maliciosas y ver que patrones o observaciones se pueden sacar, a su vez ver posibles aplicaciones
+para realizar predicciones.
+
 ## Recolección de los Datos
-Se ha recogido datos de distintas fuentes para realizar un estudio sobre IPs maliciosas en blacklists.
-La información tratada se ha recogido de las siguientes fuentes:
+Los datos se han recogido de distintas fuentes para poder tener información complementaria:
 
-[Listas IPs maliciosas](https://github.com/firehol/blocklist-ipsets)  
-[Base de datos de geolocalización](https://dev.maxmind.com/geoip/geoip2/geolite2/)  
-[Datos de población](https://data.worldbank.org/indicator/SP.POP.TOTL)
 
-Los datos obtenidos, se han parseado y limpiado para poder sacar la información relevante.
-De firehol se ha extraido la siguiente información : IP, Categoría, Quien matiene la lista donde aparece dicha ip y 
-fecha de la lista.
-De maxmind hemos obtenido la geolocalización de cada ip mediante su API.
+En el github de [firehol](https://github.com/firehol/blocklist-ipsets) encontramos un conjunto de ficheros que
+contienen blacklists mantenidas por terceros.
+En ellas encontramos las ips maliciosas identificadas diariamente y clasificadas segun su categoria.
+
+
+En la web de [maxmind](https://dev.maxmind.com/geoip/geoip2/geolite2/) encontramos una base de datos
+gratuita con la información de geolocalización de las ips.
+A su vez proporcionan una api para trabajar con la base de datos.
+
+
+En la web de [worldbank](https://data.worldbank.org/indicator/SP.POP.TOTL) encontramos datos demográficos a nivel mundial.
+
 
 ## Definición de funciones
-A continuación definimos las funciones utilitzadas para el tratamiento de datos, hay que tener en cuenta que la función
+A continuación definimos las funciones utilizadas para el tratamiento de datos. Hay que tener en cuenta que la función
 *getdataframe* tiene bastante coste temporal, por ello, es preferible guardar el dataframe en disco para luego cargarlo.
 
 ```python, term=True
@@ -27,6 +45,11 @@ A continuación definimos las funciones utilitzadas para el tratamiento de datos
     import datetime
     from plotnine import *
     import matplotlib.pyplot as plt
+    import plotly as py
+    import plotly.express as px
+    import plotly.graph_objects as go
+    
+    pandas.options.display.max_columns = 10
     
     def getdataframe(source,dest = ""):
         files = glob.glob(os.path.join(source,"*.ipset"))
@@ -71,42 +94,131 @@ A continuación definimos las funciones utilitzadas para el tratamiento de datos
             dftotal.to_csv(dest,index=False)
         return dftotal
 
-    def dropduplicates(df,groupcolumns):
-        aux = df
+    def dropduplicates(dataframe,groupcolumns):
+        aux = dataframe.copy()
         aux["Occurrence"] = df.groupby(groupcolumns).cumcount() + 1
         return aux.drop_duplicates(subset = groupcolumns, keep = "last")
+        
+    def correlation(dataframe1,dataframe2):
+        normalized = []
+        country = []
+        for c in dataframe2.columns[2:]:
+            try:
+                a = int(dataframe2[c])
+                b = int(dataframe1.loc[dataframe1["Country Name"] == c]["2018"])
+                normalized.append((a/b)*1000)
+                country.append(c)
+            except:
+                pass
+        aux = pandas.DataFrame(columns=["Country","Risk"])
+        aux["Country"] = country
+        aux["Risk"] = normalized
+        return aux
+        
+    def correlation2(dataframe):
+        it = dataframe.iterrows()
+        try:
+            next(it)
+            country = []
+            category = []
+            for i in range(len(dataframe.index)):
+                aux = next(it)
+                country.append(aux[0])
+                a1 = aux[1].keys().to_list()
+                a2 = list(aux[1].values)
+                c = a1[a2.index(max(a2))]
+                category.append(c)
+        except:
+            pass
+        dfret = pandas.DataFrame(columns=["Country","Category"])
+        dfret["Country"] = country
+        dfret["Category"] = category
+        return dfret
+
+        def correlation3(df3,df4,df6,df7):
+            #Es creen llistes buides que anem omplint amb les dades que ens interesen
+            normalized = []
+            country = []
+            code = []
+            category = []
+            category2 = []
+            for c in df4.columns[2:]:
+                try:
+                    a = int(df4[c])
+                    b = int(df3.loc[df3["Country Name"] == c]["2018"])
+                    normalized.append((a/b)*1000)
+                    country.append(c)
+                    #Es fa una cerca per trobar el país amb el que coincideix
+                    #i treure l'iterador per introduir el codi correcte
+                    s = -1
+                    for cou in df3.iloc[0:,0]:
+                        s = s+1
+                        if cou == c:
+                            code.append(df3.at[s, 'Country Code'])
+                    it = -1
+                    for i in df6.iloc[0:,0]:
+                        it = it+1
+                        if i == c:
+                            category.append(df6.at[it, 'Category'])
+                    it2 = 0
+                    t = False
+                    for i2 in df7.iloc[0:,0]:
+                        if i2 == c:
+                            category2.append(df7.at[it2, 'Category'])
+                            t = True
+                        it2 = it2+1
+                        if it2 == 225:
+                            if t == False:
+                                category2.append("No data")
+                            t = False
+                except:
+                    pass
+            aux = pandas.DataFrame(columns=["Country","Risk", "Code", "Category","No Abuse"])
+            aux["Country"] = country
+            aux["Risk"] = normalized
+            aux["Code"] = code
+            aux["Category"] = category
+            aux["No Abuse"] = category2
+            return aux
+
 ```
 
-## Datos limpios
-Con lo mencionado se ha generado el siguiente dataframe con toda la información limpia, con la primera linea generamos
-de nuevo el dataframe, con la segunda, cargamos uno preguardado.
+## Datos elegantes
+Los datos obtenidos, se han parseado y limpiado para poder sacar la información relevante.
+De firehol se ha extraido la siguiente información : IP, Categoría, Quien mantiene la lista donde aparece dicha ip y
+fecha de la lista.
+De maxmind hemos obtenido la geolocalización de cada ip mediante su API.
+Hay que tener en cuenta que de los datos en bruto se podía extraer más información que no nos ha parecido relevante
+para este estudio.
+Con lo mencionado se ha generado el siguiente dataframe con toda la información parseada.
+La primera linea de código genera de nuevo el dataframe, con la segunda, cargamos uno preguardado.
 
 ```python, term=True
-    #df = getdataframe(r"/home/victor/Escritorio/R_project/copia/R_project/blocklist-ipsets-master")
-    df = pandas.read_csv(r"/home/victor/Escritorio/R_project/copia/R_project/brutedataframe_country_date.csv")
+    #df = getdataframe(r".\blocklist-ipsets-master")
+    df = pandas.read_csv(r".\brutedataframe_country_date.csv")
     df
 ```
 
 Por último con la información de worldbank hemos generado un dataframe que contiene información relevante por país.
 
 ```python, term=True
-    df1 = pandas.read_csv(r"/home/victor/Escritorio/R_project/copia/R_project/PopulationData/API_SP.POP.TOTL_DS2_en_csv_v2_566132.csv")
+    df1 = pandas.read_csv(r".\API_SP.POP.TOTL_DS2_en_csv_v2_566132.csv")
     df1
 ```
 
-## Observaciones con datos de un día
-Inicialmente se ha esbozado un primer estudio solo con los datos de un solo día obtenidos de firehol.
-Con ello se quiere realizar observaciones a pequeña escara antes de pasar a grandes conjuntos de datos.
+## Estudios generados a partir del dataset de un día
+Inicialmente se ha trabajado en un primer estudio solo con los datos de un solo día obtenidos de firehol.
+Con ello se ha querido realizar observaciones a pequeña escala antes de pasar a grandes conjuntos de datos.
 
-### Distribución de ips maliciosas por categoria
-Se ha estudiado como se reparten las ips maliciosas en las distintas categorías definidas por firehol. 
+### Distribución de ips maliciosas por categoría
+Se ha observado como se reparten las ips maliciosas en las distintas categorías definidas por firehol.
 
 A continuación se ha transformado la información ya limpia para representar correctamente lo que se quería observar.
 Para ello se ha usado la información recopilada en el datafrme df.
-Dado que df contenía ips repetidas en la misma categoría, se han llevado a cabo distintos pasos para agrupar 
+Dado que df contenía ips repetidas en la misma categoría, se han llevado a cabo distintos pasos para agrupar
 la información de forma conveniente.
- 
-En primer lugar, se ha agrupado toda la información del dataframe por IP/categoría y a continguación se han
+
+En primer lugar, se ha agrupado toda la información del dataframe por IP/categoría y a continuación se han
 eliminado los duplicados.
 
 ```python, term=True
@@ -115,7 +227,7 @@ eliminado los duplicados.
 ```
 
 Por último, se ha pivotado la información para quedara una tabla representado lo que se quería observar
-y se ha realizado una aggregado por columnas.
+y se ha realizado una agregado por columnas.
 
 ```python, term=True
     df3 = df2.pivot(index = "IP", columns = "Category", values = "Occurrence")
@@ -127,8 +239,8 @@ y se ha realizado una aggregado por columnas.
     a
 ```
 
-Con los datos obtenidos en distintas etapas del tratamieto,
-podemos representar de varias formas la distribuión según categoría:
+Con los datos obtenidos en distintas etapas del tratamiento,
+podemos representar de varias formas la distribución según categoría:
 
 ```python, term=True
     ggplot(df, aes(x="Category")) + geom_bar(stat = 'count')
@@ -151,145 +263,366 @@ podemos representar de varias formas la distribuión según categoría:
 ```
 
 ### Indice de peligrosidad por país
-Los datos obtenidos se han utilitzado para observar y calcular un indice de peligrosidad por país.
-Para conseguir dicho indice se han usado los datos de df y df3. Para poder representar la información correctamente,
-se ha generado un nuevo dataframe que contiene el país con su indice calculado en base a
+Los datos obtenidos se han utilizado para observar y calcular un índice de peligrosidad por país.
+Para conseguir dicho índice se han usado los datos de df y df3. Para poder representar la información correctamente,
+se ha generado un nuevo dataframe que contiene el país con su índice calculado en base a
  **nº IPs maliciosas / Población**.
  
+El dataframe df4 contiene la distribución de IPs por país.
 ```python, term=True
-    df5 = pandas.read_csv(r"/home/victor/Escritorio/R_project/copia/R_project/CountryRiskCode_simple.csv")
-    df5
+    df4 = dropduplicates(df,["IP"])
+    df4 = df4.pivot(index = "IP", columns = "Country", values = "Occurrence")
+    df4 = df4.agg(["sum"])
+    df4
 ```
 
+Finalmente en el dataframe df5 podemos ver la correlación, esta nos proporciona un indice de riesgo *Risk*.
+```python, term=True
+    df5 = correlation(df1,df4)
+    df5
+```
 ### Distribución de categorías por país
 
-Una vez hemos encontrado este indice de peligrosidad hemos pensado en añadir tambien que país mantenía más IPs
-de qué categoría ya que nos ha parecido interesante saber la distribución de estos países. Para eso hemos agrupado
-el numero de IPs de cada categoria que mantenía cada país y el más grande es el que hemos anotado.
+Una vez hemos encontrado este índice de peligrosidad, hemos pensado en añadir también una observación que contemplase
+la categoría mas repetida en cada país. Esto junto con el índice, te da más información aún para atribuir un valor de peligro
+a cada país, ya que no es lo mismo mantener ips categorizadas por
+distribución de spam que categorizadas por distribución de malware.
+Para ello hemos agrupado el numero de IPs de cada categoría que mantenía cada país y el más grande
+es el que hemos anotado.
 
 Una vez hecho el agregado nos ha quedado el siguiente dataframe.
 
 ```python, term=True
-    df6 = pandas.read_csv(r"/home/victor/Escritorio/R_project/copia/R_project/CategorybyCountry.csv")
+    dfcat = df.copy()
+    df6 = dropduplicates(dfcat,["Category","Country"])
+    df6 = df6.pivot(index = "Country", columns = "Category", values = "Occurrence")
+    df6 = correlation2(df6)
     df6
 ```
 
-El problema que se puede observar es que la gran mayoria de bloques de cada país es de abuse por lo tanto, viendo que se
+El problema que se puede observar es que la gran mayoría de bloques de cada país es de abuse por lo tanto, viendo que se
 repetía mucho, hemos optado a hacer la lista sin contar esta categoría de cara a mostrar otros datos relevantes como es
 el segundo bloque mas mantenido.
 
 ```python, term=True
-    df7 = pandas.read_csv(r"/home/victor/Escritorio/R_project/copia/R_project/CategorybyCountry_Noabuse.csv")
+    dfcat = df.copy()
+    dfcat = df[df.Category != "abuse"]
+    df7 = dropduplicates(dfcat,["Category","Country"])
+    df7 = df7.pivot(index = "Country", columns = "Category", values = "Occurrence")
+    df7 = correlation2(df7)
     df7
 ```
+### Agrupación y ordenación
 
-### Agrupacion y ordenación
+Una vez obtenidos todos los datos estructurados en distintos bloques, se ha procedido a coordinar los diversos dataframes.
+Mayormente, el problema que hemos tenido es que cada dataframe ponía los países de una forma diferente o ponía más o
+menos países por lo que ha sido necesario realizar una reestructuración y normalización de la información.
 
-Ahora que ya teniamos los datos en bruto que queríamos hemos necesitado coordinar los diversos dataframes. Mayormente,
-el problema que hemos tenido es que cada dataframe ponía los paises de una forma diferente o ponía más o menos paises por lo
-que nunca estaban cerca en las posiciones de los dataframes.
+Así que la solución ha sido hacer un script para buscar las coincidencias y así escribir un dataframe final con esto.
+evitando así tener que construir nosotros unos dataframes idénticos durante las distintas observaciones y sólo tener que
+invertir tiempo para la construcción del dataframe final para mostrarlo gráficamente.
 
-Así que la solución ha sido hacer un script para buscar las coincidencias y así escrbir un dataframe final con esto.
-Con esto evitabamos tener que construir nosotros unos dataframes identicos y sólo tener que invertir tiempo para
-que nos construyera nuestro dataframe final.
 
-```python, term=True
-def correlation2(df3,df4,df6,df7):
-  	#Es creen llistes buides que anem omplint amb les dades que ens interesen
-  	normalized = []
-  	country = []
-  	code = []
-  	category = []
-  	category2 = []
-  	for c in df4.columns[2:]:
-  		try:
-  			a = int(df4[c])
-  			b = int(df3.loc[df3["Country Name"] == c]["2018"])
-  			normalized.append((a/b)*1000)
-  			country.append(c)
-  			#Es fa una cerca per trobar el país amb el que coincideix
-  			#i treure l'iterador per introduir el codi correcte
-  			s = -1
-  			for cou in df3.iloc[0:,0]:
-  				s = s+1
-  				if cou == c:
-  					code.append(df3.at[s, 'Country Code'])
-  			it = -1
-  			for i in df6.iloc[0:,1]:
-  				it = it+1
-  				if i == c:
-  					category.append(df6.at[it, 'Category'])
-  			it2 = 0
-  			t = False
-  			for i2 in df7.iloc[0:,1]:		
-  				if i2 == c:
-  					category2.append(df7.at[it2, 'Category'])
-  					t = True
-  				it2 = it2+1
-  				if it2 == 225:
-  					if t == False:
-  						category2.append("No data")
-  					t = False
-  
-  		except:
-  			pass
-  	aux = pandas.DataFrame(columns=["Country","Risk", "Code", "Category","No Abuse"])
-  	aux["Country"] = country
-  	aux["Risk"] = normalized
-  	aux["Code"] = code
-  	aux["Category"] = category
-  	aux["No Abuse"] = category2
-  	return aux
-```
+### Normalización para el mapa
 
-### Reescripción y normalización del mapa
-
-Otro problema como hemos comentado ha sido los nombres, ya que no siempre se han mantenido iguales en cada dataframe,
-por lo tanto, viendo que esto a la larga también podría ser un problema, hemos normalizado los nombres en cada dataframe
-con una función.
+A continuación, como se ha comentado anteriormente se muestra la normalización realizada en los nombres de los países
+para poder trabajar con los distintos dataframes:
 
 ```python, term=True
-def rewrite(df3):
-  	d = {'Venezuela, RB':'Venezuela',"Egypt, Arab Rep.":"Egypt","Korea, Rep.":"South Korea","Iran, Islamic Rep.":"Iran","Yemen, Rep.":"Yemen",
-  	"Czech Republic":"Czechia","Syrian Arab Republic":"Syria","Congo, Rep.":"Congo Republic",
-  	"Slovak Republic":"Slovakia","Lithuania":"Republic of Lithuania","Moldova":"Republic of Moldova",
-  	"Kyrgyz Republic":"Kyrgyzstan","Lao PDR":"Laos","Jordan":"Hashemite Kingdom of Jordan","Congo, Dem. Rep.":"DR Congo",
-  	"Cote d'Ivoire":"Ivory Coast","Seychelles":"Sey","British Virgin Islands":"BR","Russian Federation":"Russia"}
-  	df3 = df3.replace(d)
-  	df3.to_csv("PopulationData/API_SP.POP.TOTL_DS2_en_csv_v2_566132.csv")
+    def rewrite(dataframe):
+        d = {'Venezuela, RB':'Venezuela',"Egypt, Arab Rep.":"Egypt","Korea, Rep.":"South Korea","Iran, Islamic Rep.":"Iran","Yemen, Rep.":"Yemen",
+        "Czech Republic":"Czechia","Syrian Arab Republic":"Syria","Congo, Rep.":"Congo Republic",
+        "Slovak Republic":"Slovakia","Lithuania":"Republic of Lithuania","Moldova":"Republic of Moldova",
+        "Kyrgyz Republic":"Kyrgyzstan","Lao PDR":"Laos","Jordan":"Hashemite Kingdom of Jordan","Congo, Dem. Rep.":"DR Congo",
+        "Cote d'Ivoire":"Ivory Coast","Seychelles":"Sey","British Virgin Islands":"BR","Russian Federation":"Russia"}
+        dataframe = dataframe.replace(d)
+        dataframe.drop(dataframe.columns[len(dataframe.columns)-1],axis=1,inplace=True)
+        return dataframe
 
 ```
 
 El último problema que hemos afrontado ya de cara a normalizar los colores del mapa y adelantandonos un poco a la conclusión,
 es que algunos de los países que tienen bastantes bloques maliciosos no estaban representados en ningun mapa de cloropeth debido
 a ser paraísos fiscales muy pequeños y negligibles como puede ser Seychelles o Virgin Islands, así que los hemos tenido que retirar
-por la falta de posibilidad de mostrarlo.
+por la falta de datos.
 
 ### Dataframe final
 
 Finalmente, una vez agrupado todo en un dataframe, hemos aplicado esta información para construir un modelo de mapa de cara a mostrar
-más visualmente la cantidad de bloques maliciosos de IPs por pobalción.
+visualmente la cantidad de bloques maliciosos de IPs por población.
 
-El resultado es el dataframe con el que hemos hecho los estudios.
+El resultado es el siguiente dataframe:
 
 **dataframe final**
 
 ```python, term=True
-    df8 = pandas.read_csv(r"/home/victor/Escritorio/R_project/copia/R_project/CountryRiskCode.csv")
+    df1rw = rewrite(df1)
+    df8 = correlation3(df1rw,df4,df6,df7)
     df8
 ```
 
-## Observaciones temporales (Datos varios días)
+### Mapa
 
-Evolución temporal de ips por categoria
+El mapa esta hecho con la librería plotly. A partir de los códigos que hemos añadido en los dataframes y en base al
+dataframe final, se ha generado un mapa interactivo que nos permite ver como de peligroso es un país.
 
-Evolución temporal de países según peligrosidad
+```python, term=True
+    def map():
+        dfmap = df8.copy()
+        dfmap['text'] = dfmap['Country'] + '<br>' + \
+        dfmap['Code'] + '<br>' + \
+        'Main category: '  + dfmap['Category'] + '<br>' + \
+        'Category withouth abuse: ' + dfmap['No Abuse']
+        fig = go.Figure(data=go.Choropleth(
+            locations = dfmap['Code'],
+            z = dfmap['Risk'],
+            text = dfmap['text'],
+            colorscale = 'Reds',
+            autocolorscale=False,
+            reversescale=False,
+            marker_line_color='darkgray',
+            marker_line_width=0.5,
+            colorbar_tickprefix = '',
+            colorbar_title = 'number of risk',
+        ))
+        fig.update_layout(
+            title_text='Daily Global Risk',
+            geo=dict(
+                showframe=False,
+                showcoastlines=False,
+                projection_type='equirectangular'
+            ),
+            annotations = [dict(
+                x=0.55,
+                y=0.1,
+                xref='paper',
+                yref='paper',
+                text='Source: Data Driven Class',
+                showarrow = False
+            )]
+        )
+        py.offline.plot(fig,filename="mapa.html")
+```
 
-Evolución temporal de categorías por país 
+```python, term=True
+    map()
+```
 
-## Predicciónes
+<iframe id="mapa" src="mapa.html" width="1250" height="1000" frameborder="1000"></iframe>
 
-Predecir la posibilidad que una IP se vaya a incluir en blacklist y en que categoria se incluiria.
+### Conclusiones
+El resultado que podemos observar al final es bastante obvio con respecto al mapa. Los países que son
+paraísos fiscales como Belize, Seychelles o Virgin Islands por ejemplo, mantienen un número muy
+elevado de bloques maliciosos en relación a su población.
+
+Seguidamente el segundo grupo con más bloques maliciosos es el soviético, y también se puede remarcar
+Islandia y Holanda que se unen a este bloque.
+
+Se puede intuir que la causa es que estos países al tener una legislación más laxa, son una oportunidad para la
+gente que le interese mantener bloques de IPs que pueden servir para atacar al resto de países
+ya que así evitaran controles y repercusiones legales.
+
+## Estudios generados a partir del Dataset de dos meses
+
+Una vez terminado el trabajo que la información que nos proporcionaba un día, se ha querido atacar
+mas datos para entrar en el concepto de las evoluciones temporales.
+
+El estudio que hemos generado a partir del dataset de dos meses es algo diferente. En este caso,
+partiendo de las IPs de dos meses, lo que hemos hecho es coger todos los días en activo
+que ha tenido cada IP reportada como maliciosa y agruparlo por país de cara a ver que países podían acumular
+mas días con bloques maliciosos reportados y confirmados. Con ello podemos ver que mantenimiento se da
+en cada país a este tipo de IPs.
+
+Los datos sobre los que se ha trabajado son los proporcionados en la asignatura:
+
+```python, term=True
+    df = pandas.read_csv(r".\df2month.csv", encoding = "ISO-8859-1")
+    df
+```
+
+###  Distribución por días
+
+Concretamente en este caso hemos utilizado 4 funciones y hemos generado 4 dataframes distintos
+hasta llegar al final que hemos utilizado para generar este último mapa.
+
+Primeramente hemos hecho el agregado de cuantos días ha estado una IP activa en estos dos meses
+
+```python, term=True
+def days_repited(df):
+  #Para sacar dias en total que una IP que se ha tenido en activo en dos meses
+  count_series = df.groupby(['ioc']).size()
+  return count_series.to_frame(name = 'Dias').reset_index()
+```
+
+Esto nos permite ver cuantos días se ha repetido esta IP como podemos ver en esta tabla:
+
+```python, term=True
+    df9 = days_repited(df)
+    df9
+```
+##  Distribución por países
+
+Seguidamente hemos pensado que podíamos analizar de estos datos así que hemos decidido
+agrupar estas IPs por países de cara a consultar si los bloques reportados maliciosos solían
+aguantar mucho o no.
+
+Para ello primero hemos tenido que averiguar el país de cada IP, así que hemos usado la siguiente
+función.
+
+```python, term=True
+def country(df1,dest = ""):
+  # Sacamos el pais de cada IP maliciosa
+  df = pandas.DataFrame(columns=["IP","Days","Country"])
+  dftotal = pandas.DataFrame(columns=["IP","Days","Country"])
+  reader = db.Reader(r"./GeoLite2-Country_20191210/GeoLite2-Country.mmdb")
+  ips = []
+  countrylist = []
+  days = []
+  s = 0
+  for ip in df1.iloc[0:,0]:
+    try:
+      c = reader.country(ip).country.names["en"]
+      countrylist.append(c)
+      ips.append(df1.at[s, 'ioc'])
+      days.append(df1.at[s, 'Dias'].astype(int))
+    except:
+      #c = ''
+      pass
+    s = s +1
+  df["IP"] = ips
+  df["days"] = days
+  df["Country"] = countrylist
+  dftotal = dftotal.append(df, ignore_index = True)
+  if dest != "" and not os.path.exists(dest):
+    dftotal.to_csv(dest,index=False)
+  return dftotal
+```
+Con el país, hemos hecho el agregado  para ver cuantos días
+acumulaban en total a partir de la siguiente función.
+
+```python, term=True
+def agg_country(df):
+  # Agrupamos en total cuantos dias acumula cada pais de IPs maliciosas. Para saber si
+  # ese pais por ejemplo elimina rapido sus IPs reportadas como maliciosas
+  count_series = df.groupby(['Country']).size()
+  new_df = count_series.to_frame(name = 'Dias totales').reset_index()
+  return new_df
+```
+El resultado es bastante interesante ya que se podía ver mucha diferencia en la acumulación por país
+
+El dataframe generado es el siguiente:
+
+```python, term=True
+    #df10 = country(df9,dest= r"./IP_Days_total.csv")
+    df10 = pandas.read_csv(r"./IP_Days_total.csv")
+    df10 = agg_country(df10)
+    df10
+```
+
+## Normalización para el uso del mapa y dataframe final
+
+Hemos tenido que generar otra vez el código para el uso del mapa con la siguiente función
+
+```python, term=True
+def code(df,df5):
+  # Para meter el codigo ya que sino el mapa no se genera.
+  s = -1
+  country = []
+  days = []
+  code = []
+  s1 = -1
+  for c in df.iloc[0:,0]:
+    s = -1
+    s1 = s1 +1
+    try:
+      for cou in df5.iloc[0:,0]:
+        s = s+1
+        if cou == c:
+          #print (df5.at[s, 'Country Code'],df5.at[s, 'Country Name'])
+          code.append(df5.at[s, 'Country Code'])
+          country.append(df5.at[s, 'Country Name'])
+          days.append(df.at[s1, 'Dias totales'])
+    except:
+      pass
+  aux = pandas.DataFrame(columns=["Country","Dias totales", "Code"])
+  aux["Country"] = country
+  aux["Dias totales"] = days
+  aux["Code"] = code
+  #El dataframe final usado para el mapa es este
+  return aux
+```
+El dataframe final usado para el mapa es el siguiente:
+
+```python, term=True
+    df11 = code(df10,df1rw)
+    df11
+```
+
+### Segundo mapa
+
+Este mapa nos muestra el numero total de días acumulados por cada país de sus IPs maliciosas
+reportadas en estos dos meses del dataframe.
+
+```python, term=True
+    def map2():
+        dfmap = df11.copy()
+        dfmap['text'] = dfmap['Country'] + '<br>' + \
+        dfmap['Code']
+        fig2 = go.Figure(data=go.Choropleth(
+            locations = dfmap['Code'],
+            z = dfmap['Dias totales'],
+            text = dfmap['text'],
+            colorscale = 'Blues',
+            autocolorscale=False,
+            reversescale=False,
+            marker_line_color='darkgray',
+            marker_line_width=0.5,
+            colorbar_tickprefix = '',
+            colorbar_title = 'Dias totales',
+        ))
+        fig2.update_layout(
+            title_text='Total de dias que han estado las IPs reportadas como maliciosas activas en dos meses',
+            geo=dict(
+                showframe=False,
+                showcoastlines=False,
+                projection_type='equirectangular'
+            ),
+            annotations = [dict(
+                x=0.55,
+                y=0.1,
+                xref='paper',
+                yref='paper',
+                text='Source: Data Driven Class',
+                showarrow = False
+            )]
+        )
+        py.offline.plot(fig2,filename="mapa.html")
+```
+
+```python, term=True
+    map2()
+```
+
+<iframe id="mapa" src="mapa2.html" width="1250" height="1000"  frameborder="1000"></iframe>
+
+### Conclusiones
+
+Las conclusiones que podemos sacar de este mapa son bastante curiosas. Principalmente podemos
+observar claramente que el país que más días en activo mantiene bloques maliciosos de IPs es
+Uruguay. Uruguay precisamente no es uno de los países más problemáticos en este aspecto pero
+parece ser que tiene una política de eliminación de contenido malicioso en Internet bastante mala.
+
+Otro conjunto interesante es el de Indonesia donde parece que tampoco hay mucha legislación
+para retirar contenido malicioso o si la hay no se realizan controles para su aplicación.
+
+Podemos observar donde en España y en general en el resto de Europa, los bloques maliciosos apenas
+duran pocos días. Rusia o China a pesar de ser unos gigantes en cuanto a ataques maliciosos parece
+ser que tampoco mantienen en activo por mucho tiempo sus IPs problemáticas.
+
+## Trabajo futuro
+
+Este estudio de datos se podría usar para definir parámetros para intentar predecir la posibilidad
+que una IP se vaya a incluir en blacklist y en que categoría se incluiría.
 
 ### Datos relevantes para Predecir
 Para poder entrenar un modelo de predicción hay que disponer de suficientes datos con atributos releventes
@@ -302,27 +635,5 @@ diferenciados. De este modo y en base a los atributos se puede realizar la predi
 * Categoría en blacklist
 * Tiempo en blacklist
 
-## Tiempos de ejecucion
-* Parser -> 617.61s 878.29s
-* Drop duplicates -> 9.66s
-* spread -> 8.47s
 
-## Mapa
 
-El mapa esta hecho con la libreria plotly. A partir de los codigos que hemos añadido en los dataframes
-se ha generado un mapa interactivo que nos permite ver como de peligroso es un pais.
-
-<iframe id="mapa" src="mapa.html" width="1250" height="1000"  frameborder="1000"></iframe>
-
-## Conclusiones
-
-El resultado que podemos sacar al final es bastante obvio con respecto al mapa. Los países que son
-paraísos fiscales como Belize, Seychelles o Virgin Islands por ejemplo, mantienen un número muy
-elevado de bloques maliciosos para su población.
-
-Seguidamente el segundo grupo con más bloques maliciosos es el sovietico, y también se puede remarcar
-Islandia y Holanda que se cuelan en la estadistica.
-
-Esto es debido a que estos paises al tener una legislación más laxa, son una oportunidad para la
-gente que le interese mantener bloques de IPs que pueden servir para atacar al resto de paises
-ya que así evitaran que les cierren estas o que les repecturan acciones legales.

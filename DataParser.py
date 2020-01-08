@@ -3,6 +3,7 @@ import glob
 import pandas
 import geoip2.database as db
 import datetime
+from dfply import *
 
 # source = r"D:\Master_Cybersecurity_management\05-Data_driven_security\blocklist-ipsets-master"
 # dest = r"D:\Master_Cybersecurity_management\05-Data_driven_security\Practica\data.csv"
@@ -24,7 +25,7 @@ def getdataframe(source,dest = ""):
         content = aux.readlines()
         aux.close()
 
-        for l in  content:
+        for l in content:
             if "Category" in l:
                 cat = str(l.split(":")[-1]).strip()
             elif "Maintainer" in l:
